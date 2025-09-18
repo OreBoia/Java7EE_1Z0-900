@@ -179,22 +179,6 @@ Quando un client invoca `createCustomer("  John Doe  ", " john@email.com ")`, l'
   >> Dentro CustomerServiceBean.createCustomer()...
 [Audit] Esecuzione di createCustomer completata in 52ms. Valore restituito: Cliente John Doe creato con email <john@email.com>
 
-### 4. Attivazione dell'Interceptor in `beans.xml`
-
-Perché il container EJB possa riconoscere e applicare l'interceptor, è necessario dichiararlo nel file `beans.xml` (o `ejb-jar.xml` per configurazioni più specifiche).
-
-```xml
-<!-- src/main/webapp/WEB-INF/beans.xml -->
-<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
-       bean-discovery-mode="all">
-    <interceptors>
-        <class>com.example.LoggingInterceptor</class>
-    </interceptors>
-</beans>
-```
-
 ## Lista dei Comandi e Annotazioni Principali
 
 | Annotazione/Comando | Descrizione |

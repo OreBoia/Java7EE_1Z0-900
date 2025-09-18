@@ -84,6 +84,7 @@ In questo modello, lo sviluppatore rinuncia alla gestione dichiarativa e si assu
 
 - **Come si attiva**: Si annota l'EJB con `@TransactionManagement(TransactionManagementType.BEAN)`.
 - **Come si usa**: Si inietta l'oggetto `UserTransaction` e si usano i suoi metodi `begin()`, `commit()` e `rollback()`.
+- **Importante**: Con BMT, l'annotazione `@TransactionAttribute` **non ha effetto** e viene ignorata dal container, poiché è lo sviluppatore a controllare programmaticamente le transazioni.
 
 ### Esempio di BMT
 
