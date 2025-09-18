@@ -112,6 +112,42 @@ public class SimpleAuditService {
 
 **Nota:** Per usare `@Transactional` su un bean CDI, è necessario che nel progetto sia presente un file `beans.xml` e che l'annotazione sia intercettata.
 
+### Configurazione del file beans.xml
+
+Per abilitare l'intercettazione dell'annotazione `@Transactional` sui bean CDI, è necessario configurare il file `beans.xml` nella directory `META-INF` (per moduli EJB/CDI) o `WEB-INF` (per applicazioni web):
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                           http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+       bean-discovery-mode="all">
+    
+    <!-- Abilitazione degli interceptor transazionali -->
+    <interceptors>
+        <class>javax.transaction.Transactional$TxType$Interceptor</class>
+    </interceptors>
+    
+</beans>
+```
+
+**Alternativa semplificata (Java EE 7+):**
+
+In molti application server moderni, è sufficiente un file `beans.xml` minimale:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                           http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+       bean-discovery-mode="all">
+</beans>
+```
+
+Con `bean-discovery-mode="all"`, il container abilita automaticamente tutti gli interceptor standard, incluso quello per `@Transactional`.
+
 ## Tabella delle Annotazioni Principali
 
 | Annotazione | Fornita da | Scopo |

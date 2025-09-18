@@ -47,6 +47,52 @@ public @interface Monitored {
 }
 ```
 
+#### Spiegazione delle Meta-Annotazioni
+
+Le annotazioni `@Target` e `@Retention` sono chiamate **meta-annotazioni** perché sono annotazioni che si applicano ad altre annotazioni per definirne il comportamento.
+
+##### @Target
+
+L'annotazione `@Target` specifica **dove** può essere applicata l'annotazione personalizzata:
+
+- `ElementType.TYPE`: L'annotazione può essere applicata a classi, interfacce, enum
+- `ElementType.METHOD`: L'annotazione può essere applicata a metodi
+- `ElementType.FIELD`: L'annotazione può essere applicata a campi/attributi
+- `ElementType.PARAMETER`: L'annotazione può essere applicata a parametri di metodi
+- `ElementType.CONSTRUCTOR`: L'annotazione può essere applicata a costruttori
+- `ElementType.LOCAL_VARIABLE`: L'annotazione può essere applicata a variabili locali
+- `ElementType.ANNOTATION_TYPE`: L'annotazione può essere applicata ad altre annotazioni
+- `ElementType.PACKAGE`: L'annotazione può essere applicata a package
+
+Nel nostro esempio, `@Target({ElementType.TYPE, ElementType.METHOD})` significa che `@Monitored` può essere usata sia su classi/interfacce che su singoli metodi.
+
+##### @Retention
+
+L'annotazione `@Retention` specifica **quando** l'annotazione è disponibile:
+
+- `RetentionPolicy.SOURCE`: L'annotazione è disponibile solo nel codice sorgente e viene scartata dal compilatore
+- `RetentionPolicy.CLASS`: L'annotazione è inclusa nel bytecode ma non è disponibile a runtime (default)
+- `RetentionPolicy.RUNTIME`: L'annotazione è disponibile a runtime tramite reflection
+
+Per gli interceptor binding è **obbligatorio** usare `RetentionPolicy.RUNTIME` perché il container Java EE deve poter leggere l'annotazione a runtime per sapere quali intercettori attivare.
+
+##### Esempio di utilizzo con @Target
+
+```java
+// Applicazione a livello di classe (TYPE)
+@Monitored
+@Stateless
+public class CustomerServiceBean {
+    
+    // Questo metodo eredita l'interceptor dalla classe
+    public void createCustomer(String name) { ... }
+    
+    // Applicazione a livello di metodo (METHOD) - interceptor aggiuntivo
+    @Monitored
+    public void deleteCustomer(String id) { ... }
+}
+```
+
 ### 2. Creazione degli Intercettori
 
 #### Interceptor per la "pulizia" dei parametri (`ParameterSanitizerInterceptor`)
@@ -185,6 +231,8 @@ Quando un client invoca `createCustomer("  John Doe  ", " john@email.com ")`, l'
 | --- | --- |
 | `@Interceptor` | Marca una classe come un interceptor. |
 | `@InterceptorBinding` | Crea un nuovo tipo di binding per gli intercettori. |
+| `@Target` | Meta-annotazione che specifica dove può essere applicata un'annotazione (TYPE, METHOD, FIELD, etc.). |
+| `@Retention` | Meta-annotazione che specifica quando un'annotazione è disponibile (SOURCE, CLASS, RUNTIME). |
 | `@AroundInvoke` | Definisce un metodo in un interceptor che "avvolge" l'invocazione di un metodo di business. |
 | `@AroundTimeout` | Definisce un metodo in un interceptor che intercetta le chiamate ai metodi di timeout (associati a `@Timeout`). |
 | `InvocationContext` | Interfaccia passata ai metodi `@AroundInvoke` per controllare la catena di invocazione. |
