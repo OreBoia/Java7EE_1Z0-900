@@ -94,6 +94,115 @@ public class HelloClient {
 
 *Nota: L'interfaccia `HelloService` usata nel client è la stessa definita sul server o generata da `wsimport`.*
 
+## Esempio di WSDL Generato
+
+Quando il web service `HelloService` viene deployato, il container Java EE genera automaticamente il file WSDL. Ecco un esempio di come apparirebbe:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions targetNamespace="http://soap.dispense/" 
+             name="HelloService" 
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://soap.dispense/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+  <!-- Definizione dei tipi di dati utilizzati -->
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://soap.dispense/" 
+                  schemaLocation="http://localhost:8080/YourAppName/HelloService?xsd=1"/>
+    </xsd:schema>
+  </types>
+
+  <!-- Definizione dei messaggi scambiati -->
+  <message name="sayHello">
+    <part name="parameters" element="tns:sayHello"/>
+  </message>
+  
+  <message name="sayHelloResponse">
+    <part name="parameters" element="tns:sayHelloResponse"/>
+  </message>
+
+  <!-- Definizione dell'interfaccia del servizio (PortType) -->
+  <portType name="HelloService">
+    <operation name="sayHello">
+      <input wsam:Action="http://soap.dispense/HelloService/sayHelloRequest" 
+             message="tns:sayHello" 
+             xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"/>
+      <output wsam:Action="http://soap.dispense/HelloService/sayHelloResponse" 
+              message="tns:sayHelloResponse" 
+              xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"/>
+    </operation>
+  </portType>
+
+  <!-- Definizione del binding SOAP -->
+  <binding name="HelloServicePortBinding" type="tns:HelloService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="sayHello">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <!-- Definizione del servizio e dell'endpoint -->
+  <service name="HelloService">
+    <port name="HelloServicePort" binding="tns:HelloServicePortBinding">
+      <soap:address location="http://localhost:8080/YourAppName/HelloService"/>
+    </port>
+  </service>
+
+</definitions>
+```
+
+### Schema XSD Associato
+
+Il WSDL fa riferimento anche a uno schema XSD separato che definisce la struttura degli elementi XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" 
+           targetNamespace="http://soap.dispense/"
+           xmlns:tns="http://soap.dispense/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Elemento per la richiesta sayHello -->
+  <xs:element name="sayHello" type="tns:sayHello"/>
+  
+  <!-- Elemento per la risposta sayHelloResponse -->
+  <xs:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+
+  <!-- Tipo complesso per la richiesta -->
+  <xs:complexType name="sayHello">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Tipo complesso per la risposta -->
+  <xs:complexType name="sayHelloResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+```
+
+### Accesso al WSDL
+
+Una volta deployato il servizio, il WSDL è accessibile automaticamente aggiungendo `?wsdl` all'URL del servizio:
+
+- **WSDL**: `http://localhost:8080/YourAppName/HelloService?wsdl`
+- **Schema XSD**: `http://localhost:8080/YourAppName/HelloService?xsd=1`
+
+Questi URL possono essere utilizzati dai client per generare automaticamente le classi proxy con `wsimport`.
+
 ## Comandi Utili
 
 Il JDK include alcuni strumenti a riga di comando per lavorare con JAX-WS:
