@@ -6,18 +6,18 @@ Questo è un meccanismo potente per instradare messaggi a consumer specifici sen
 
 ## Come Funziona
 
-1.  **Il Producer imposta le proprietà**: Il `JMSProducer` aggiunge metadati al messaggio sotto forma di proprietà (header custom). Queste proprietà sono coppie chiave-valore.
-2.  **Il Consumer definisce un selettore**: Il `JMSConsumer` viene creato con una stringa di selezione che fa riferimento a queste proprietà.
-3.  **Il Broker filtra i messaggi**: Il provider JMS valuta il selettore per ogni messaggio presente nella destinazione. Consegna al consumer solo i messaggi che soddisfano la condizione del selettore.
+1. **Il Producer imposta le proprietà**: Il `JMSProducer` aggiunge metadati al messaggio sotto forma di proprietà (header custom). Queste proprietà sono coppie chiave-valore.
+2. **Il Consumer definisce un selettore**: Il `JMSConsumer` viene creato con una stringa di selezione che fa riferimento a queste proprietà.
+3. **Il Broker filtra i messaggi**: Il provider JMS valuta il selettore per ogni messaggio presente nella destinazione. Consegna al consumer solo i messaggi che soddisfano la condizione del selettore.
 
 ### Sintassi del Selettore
 
 La sintassi è un sottoinsieme di SQL-92. Si possono usare:
 
--   Operatori aritmetici: `+`, `-`, `*`, `/`
--   Operatori di confronto: `=`, `>`, `<`, `>=`, `<=`, `<>` (diverso)
--   Operatori logici: `AND`, `OR`, `NOT`
--   `BETWEEN`, `IN`, `LIKE`, `IS NULL`
+- Operatori aritmetici: `+`, `-`, `*`, `/`
+- Operatori di confronto: `=`, `>`, `<`, `>=`, `<=`, `<>` (diverso)
+- Operatori logici: `AND`, `OR`, `NOT`
+- `BETWEEN`, `IN`, `LIKE`, `IS NULL`
 
 Le proprietà possono essere di tipo `boolean`, `byte`, `short`, `int`, `long`, `float`, `double`, e `String`.
 
@@ -115,14 +115,15 @@ public class BookOrderProcessor {
 
 ## Vantaggi dei Message Selector
 
--   **Flessibilità**: Permette di gestire diversi tipi di messaggi su una singola destinazione, semplificando l'architettura.
--   **Efficienza**: Il filtraggio avviene sul server, riducendo il traffico di rete e il carico di lavoro del client, che non deve scartare messaggi indesiderati.
--   **Disaccoppiamento**: I producer non devono conoscere quali consumer sono interessati a quali messaggi. Aggiungono semplicemente metadati.
+- **Flessibilità**: Permette di gestire diversi tipi di messaggi su una singola destinazione, semplificando l'architettura.
+- **Efficienza**: Il filtraggio avviene sul server, riducendo il traffico di rete e il carico di lavoro del client, che non deve scartare messaggi indesiderati.
+- **Disaccoppiamento**: I producer non devono conoscere quali consumer sono interessati a quali messaggi. Aggiungono semplicemente metadati.
 
 ## Limitazioni
 
--   **Performance**: L'uso di selettori complessi può avere un impatto sulle performance del broker JMS, poiché deve ispezionare e valutare le proprietà di ogni messaggio.
--   **Solo Proprietà**: I selettori possono operare solo sulle proprietà (header) del messaggio, non sul suo corpo (`payload`).
+- **Performance**: L'uso di selettori complessi può avere un impatto sulle performance del broker JMS, poiché deve ispezionare e valutare le proprietà di ogni messaggio.
+- **Solo Proprietà**: I selettori possono operare solo sulle proprietà (header) del messaggio, non sul suo corpo (`payload`).
 
 I Message Selector sono uno strumento fondamentale per costruire logiche di routing complesse in applicazioni basate su messaggistica.
+
 ````
