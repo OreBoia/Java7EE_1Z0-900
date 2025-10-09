@@ -105,6 +105,22 @@ public class OrderProcessorMDB implements MessageListener {
 }
 ```
 
+## Il Ruolo delle Transazioni XA
+
+Spesso, quando si parla di transazioni JTA, si sente il termine **XA**. Ma qual è la relazione?
+
+- **XA** è uno standard (una specifica) che definisce un'interfaccia di comunicazione tra un **Transaction Manager** globale (come quello fornito dal container Java EE) e **Resource Manager** locali (come un driver di database JDBC o un broker JMS).
+- **JTA** è l'API Java che implementa il ruolo del Transaction Manager e permette al codice applicativo di interagire con le transazioni.
+
+In pratica, JTA utilizza il protocollo XA "sotto il cofano" per coordinare una transazione distribuita tra diverse risorse. Affinché una risorsa (es. un database) possa partecipare a una transazione JTA, deve esporre un driver o un connettore compatibile con XA.
+
+Dal punto di vista dello sviluppatore Java EE, questa è per lo più una **questione di configurazione**:
+
+1. **Configurazione del Datasource**: Quando si configura un `DataSource` nel server applicativo, si deve scegliere la versione XA (es. `OracleXADataSource` invece di un `OracleDataSource` semplice).
+2. **Configurazione del Connettore JMS**: Il connettore JMS (Resource Adapter) deve essere configurato per supportare transazioni XA.
+
+Una volta configurate correttamente le risorse, il codice applicativo che usa JTA (come l'EJB `OrderService` visto prima) non ha bisogno di conoscere i dettagli di XA. Il container si occupa di arruolare le risorse XA nella transazione JTA e di orchestrare il protocollo di commit a due fasi (two-phase commit) per garantire che la transazione venga confermata o annullata atomicamente su tutte le risorse.
+
 ## Semplificazioni con JMS 2.0 (`JMSContext`)
 
 JMS 2.0 ha introdotto `JMSContext`, che semplifica ulteriormente la gestione delle transazioni.
