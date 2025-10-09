@@ -23,11 +23,14 @@
 
 | Domanda | Risposta | Note |
 |---|---|---|
-| 6 | A, B, C | ❌ MANCA E |
-| 9 | A, B, D | ❌ A, D, MANCA C |
-| 20 | C | ❌ |
-| 24 | C | ❌ |
-| 27 | D | ❌ |
+| 2 | A, B, C, E | ❌ |
+| 6 | A, B, C, D | ❌ MANCANO E ED F |
+| 10 | A | ❌ |
+| 19 | A, C, D, E | ❌ MANCA LA B |
+| 22 | D | ❌ |
+| 23 | B, D, E | ❌ MANCA LA C |
+| 25 | B | ❌ |
+| 30 | C | ❌ |
 
 ---
 
@@ -35,7 +38,6 @@
 
 ### Risposte Quiz - Enrico Montinaro
 
-### Risposte Quiz - Enrico Montinaro
 
 | Domanda | Risposta | Note |
 |---|---|---|
@@ -70,7 +72,15 @@
 
 ### Risposte Quiz - Alessio Sardellini
 
-0
+| Domanda | Risposta | Note |
+|---|---|---|
+| 2 | | |
+| 6 | | |
+| 13 | | |
+| 14 | | |
+| 19 | | |
+| 25 | | |
+| 30 | | |
 
 ---
 
@@ -80,4 +90,8 @@
 
 | Domanda | Risposta | Note |
 |---|---|---|
-| 2 | A, B, D, E | ❌ D, MANCA C |
+| 6 | A, B, C, D, F | ❌ MANCA LA E |
+| 19 | A, B, C | ❌ MANCA LA E |
+| 21 | D | ❌ |
+| 23 | C, D, E | ❌ MANCA LA B |
+| 25 | B | ❌ |

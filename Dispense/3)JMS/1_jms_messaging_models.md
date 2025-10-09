@@ -9,7 +9,7 @@ Questo modello è basato sul concetto di **Queue** (coda).
 ### Caratteristiche Principali
 
 - **Comunicazione Uno-a-Uno**: Un messaggio inviato a una coda viene consegnato a un solo consumer, anche se ce ne sono molti in ascolto.
-- **Load Balancing Naturale**: Se più consumer sono in ascolto sulla stessa coda, il broker JMS distribuisce i messaggi tra di loro. Questo permette di scalare l'elaborazione dei messaggi in modo semplice.
+- **Load Balancing Naturale**: Se più consumer sono in ascolto sulla stessa coda, il broker JMS distribuisce i messaggi tra di loro. Questo permette di scalare l'elaborazione dei messaggi in modo semplice
 - **Affidabilità**: Il messaggio rimane nella coda finché non viene consumato con successo.
 - **Utilizzo Tipico**: Task queue, elaborazione di ordini, comunicazioni che richiedono che un solo destinatario processi il messaggio.
 
