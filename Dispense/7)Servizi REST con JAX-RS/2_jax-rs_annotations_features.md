@@ -26,6 +26,20 @@ Le annotazioni sono il cuore di JAX-RS. Permettono di mappare classi e metodi Ja
 | `@Produces` | Specifica il/i tipo/i MIME (es. `application/json`, `application/xml`) che il metodo della risorsa può produrre e restituire al client. |
 | `@Consumes` | Specifica il/i tipo/i MIME che il metodo della risorsa può consumare, ovvero accettare in input dal client. |
 
+### Costanti `MediaType` Comuni
+
+La classe `javax.ws.rs.core.MediaType` fornisce costanti stringa per i tipi di media più comuni, rendendo il codice più leggibile e meno soggetto a errori di battitura.
+
+| Costante                       | Stringa MIME                            | Utilizzo Comune                               |
+| :----------------------------- | :-------------------------------------- | :-------------------------------------------- |
+| `APPLICATION_JSON`             | `"application/json"`                    | API REST che comunicano con client moderni.   |
+| `APPLICATION_XML`              | `"application/xml"`                     | Servizi legacy o integrazioni B2B.            |
+| `TEXT_PLAIN`                   | `"text/plain"`                          | Risposte semplici, debug, dati non strutturati. |
+| `TEXT_HTML`                    | `"text/html"`                           | Contenuto per browser web.                    |
+| `APPLICATION_FORM_URLENCODED`  | `"application/x-www-form-urlencoded"` | Invio di form HTML.                           |
+| `MULTIPART_FORM_DATA`          | `"multipart/form-data"`                 | Upload di file tramite form.                  |
+| `APPLICATION_OCTET_STREAM`     | `"application/octet-stream"`            | Download di file binari generici.             |
+
 ### Esempio di Risorsa Base
 
 ```java

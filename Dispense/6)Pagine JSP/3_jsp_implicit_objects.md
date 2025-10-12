@@ -50,7 +50,7 @@ Questa pagina JSP mostra come accedere ad alcuni degli oggetti impliciti più co
 
 **`implicit-objects-demo.jsp`**
 
-```jsp
+```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

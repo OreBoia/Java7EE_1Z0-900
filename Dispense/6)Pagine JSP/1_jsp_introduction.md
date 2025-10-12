@@ -31,7 +31,7 @@ Questa pagina JSP mostra l'ora corrente e saluta un utente il cui nome è passat
 
 **`welcome.jsp`**
 
-```jsp
+```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.Date" %>
 <html>
