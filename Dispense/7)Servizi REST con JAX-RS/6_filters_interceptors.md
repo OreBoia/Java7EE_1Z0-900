@@ -27,6 +27,7 @@ I Filtri e gli Interceptors sono una delle novità più importanti di JAX-RS 2.0
 La distinzione tra Filtri e Interceptors riflette due livelli diversi di astrazione nel modello di elaborazione HTTP:
 
 **Teoria dei Livelli di Elaborazione**:
+
 1. **Metadata Layer** (Filtri): Gestisce metadati HTTP (header, URI, status code)
 2. **Content Layer** (Interceptors): Gestisce il contenuto delle entity durante marshalling/unmarshalling
 
@@ -36,7 +37,7 @@ La distinzione tra Filtri e Interceptors riflette due livelli diversi di astrazi
   - Possono interrompere completamente la catena di elaborazione (`abortWith()`)
   - Ideali per: autenticazione, autorizzazione, logging, CORS, caching
 
-- **Interceptors**: Implementano il **Interceptor Pattern** a livello di **contenuto** 
+- **Interceptors**: Implementano il **Interceptor Pattern** a livello di **contenuto**
   - Operano sui dati durante serializzazione/deserializzazione
   - Integrati nel processo di marshalling delle entity
   - Non possono interrompere ma solo modificare il flusso dei dati
@@ -56,6 +57,7 @@ La distinzione tra Filtri e Interceptors riflette due livelli diversi di astrazi
 | **Writer Interceptor** | `WriterInterceptor` | `WriterInterceptor` | **Output Processing**: Marshalling delle entity in uscita |
 
 **Flusso di Elaborazione Simmetrico**:
+
 - **Server**: Request Filter → Reader Interceptor → Resource Method → Writer Interceptor → Response Filter
 - **Client**: Request Filter → Writer Interceptor → HTTP Call → Reader Interceptor → Response Filter
 
@@ -218,6 +220,12 @@ public class LoggingFilter implements ContainerRequestFilter, ContainerResponseF
         String requestId = UUID.randomUUID().toString();
         requestContext.setProperty("requestId", requestId);
         
+        /**
+         * Registra nel log i dettagli della richiesta HTTP in arrivo.
+         * Le informazioni includono un ID univoco per la richiesta, il metodo HTTP (es. GET, POST),
+         * il percorso dell'URI, l'indirizzo IP del client e l'header User-Agent.
+         * Questo è utile per scopi di debug, monitoraggio e auditing.
+         */
         logger.info("REQUEST [{}] {} {} from {} - User-Agent: {}", 
                    requestId,
                    requestContext.getMethod(),
@@ -280,6 +288,7 @@ public class LoggingFilter implements ContainerRequestFilter, ContainerResponseF
 **Principio Teorico**: L'ordinamento dei filtri implementa una **Chain of Responsibility ordinata** dove ogni anello ha una priorità specifica che determina la sua posizione nella catena.
 
 **Teoria delle Priorità**:
+
 - **Valori numerici bassi = Priorità alta**: Implementa il principio di "importanza inversa"
 - **Determinismo**: Garantisce un ordinamento prevedibile e riproducibile
 - **Separazione delle responsabilità**: Ogni fascia di priorità ha uno scopo architetturale specifico
@@ -503,10 +512,12 @@ public class ProductResource {
 **Teoria degli Interceptors**: Operano al **Content Processing Layer**, intercettando il flusso di serializzazione/deserializzazione delle entity HTTP. Implementano il **Interceptor Pattern** integrato nel ciclo di vita delle entity.
 
 **Differenza Fondamentale dai Filtri**:
+
 - **Filtri**: Operano sui metadati (header, URI, status) - **Control Flow**
 - **Interceptors**: Operano sui contenuti (entity body) - **Data Flow**
 
 **Timing di Esecuzione**:
+
 - **WriterInterceptor**: Durante la serializzazione (Java Object → Stream HTTP)
 - **ReaderInterceptor**: Durante la deserializzazione (Stream HTTP → Java Object)
 

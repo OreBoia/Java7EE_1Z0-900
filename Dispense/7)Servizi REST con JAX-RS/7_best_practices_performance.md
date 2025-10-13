@@ -8,6 +8,8 @@ La paginazione è essenziale per API che gestiscono grandi dataset. Esistono div
 
 ### Paginazione Offset-Based
 
+**Descrizione dell'esempio**: Implementazione completa di un endpoint REST per la paginazione offset-based di prodotti. L'esempio mostra come gestire parametri di paginazione, validazione input, costruzione di metadati di risposta e link di navigazione conformi allo standard RFC 5988. Include header personalizzati per fornire informazioni complete sulla paginazione al client.
+
 ```java
 @Path("/prodotti")
 public class ProdottoResource {
@@ -94,6 +96,8 @@ public class ProdottoResource {
 
 ### Paginazione Cursor-Based per Performance
 
+**Descrizione dell'esempio**: Implementazione di paginazione cursor-based per ottimizzare le performance su dataset molto grandi. Questo approccio evita i problemi di performance dell'offset-based quando si naviga verso pagine profonde. L'esempio mostra l'uso di cursori `after` e `before`, la costruzione di una risposta strutturata con metadati di paginazione e link di navigazione.
+
 ```java
 @Path("/eventi")
 public class EventoResource {
@@ -167,6 +171,8 @@ public class EventoResource {
 ## Caching HTTP
 
 ### Cache Control Headers
+
+**Descrizione dell'esempio**: Implementazione completa del caching HTTP con ETag e controlli di concorrenza ottimistica. L'esempio mostra come generare ETag basati su contenuto e versione, gestire conditional requests per risposte 304 Not Modified, implementare cache control headers appropriati, e gestire aggiornamenti con controlli di concorrenza per evitare conflitti.
 
 ```java
 @Path("/articoli")
@@ -258,6 +264,8 @@ public class ArticoloResource {
 
 ### Cache con Vary Header
 
+**Descrizione dell'esempio**: Implementazione di caching avanzato con header Vary per gestire content negotiation. L'esempio mostra come gestire cache differenziate basate su Accept e Accept-Language headers, generare ETag che includono formato e lingua, e utilizzare l'header Vary per informare i proxy di cache che la risposta varia in base a specifici header della richiesta.
+
 ```java
 @GET
 @Path("/contenuto")
@@ -295,6 +303,8 @@ public Response getContenuto(@HeaderParam("Accept") String accept,
 ## Ottimizzazioni delle Performance
 
 ### Lazy Loading e Projection
+
+**Descrizione dell'esempio**: Implementazione di ottimizzazione delle performance attraverso projection e lazy loading. L'esempio mostra come permettere ai client di specificare quali campi recuperare tramite query parameter `fields`, come ottimizzare le query database basandosi sui campi richiesti, e come implementare la serializzazione selettiva per ridurre il payload di risposta e migliorare le performance di rete.
 
 ```java
 @Path("/utenti")
@@ -350,6 +360,8 @@ public class UtenteResource {
 ```
 
 ### Bulk Operations
+
+**Descrizione dell'esempio**: Implementazione di operazioni bulk per ottimizzare performance quando si lavora con multiple entità. L'esempio mostra come gestire la creazione e aggiornamento batch di prodotti, implementare validazione batch con raccolta di tutti gli errori, gestire risposte parziali con status code Multi-Status (207), e fornire feedback dettagliato sui risultati delle operazioni bulk.
 
 ```java
 @Path("/prodotti")
@@ -419,6 +431,8 @@ public class ProdottoResource {
 
 ### Streaming per Grandi Dataset
 
+**Descrizione dell'esempio**: Implementazione di streaming output per l'esportazione efficiente di grandi dataset. L'esempio mostra come utilizzare StreamingOutput per evitare l'accumulo di memoria quando si esportano migliaia di record, implementare paginazione interna per il processing batch, gestire il flush periodico per ottimizzare l'uso della memoria, e fornire file di download con header appropriati.
+
 ```java
 @Path("/export")
 public class ExportResource {
@@ -487,6 +501,8 @@ public class ExportResource {
 
 ### URI Versioning
 
+**Descrizione dell'esempio**: Implementazione di versioning delle API tramite URI path. Questo approccio mantiene versioni separate delle risorse attraverso path diversi (/api/v1/, /api/v2/), permettendo l'evoluzione dell'API mantenendo backward compatibility. Ogni versione ha le proprie classi resource e DTO, consentendo modifiche indipendenti tra le versioni.
+
 ```java
 @Path("/api/v1/prodotti")
 public class ProdottoV1Resource {
@@ -514,6 +530,8 @@ public class ProdottoV2Resource {
 ```
 
 ### Header-based Versioning
+
+**Descrizione dell'esempio**: Implementazione di versioning tramite header personalizzato API-Version. Questo approccio mantiene URL puliti mentre permette al client di specificare la versione desiderata tramite header. L'esempio mostra la gestione di multiple versioni in una singola classe resource, mapping dinamico ai DTO appropriati, e informazioni sulle versioni supportate nella risposta.
 
 ```java
 @Path("/prodotti")
@@ -555,6 +573,8 @@ public class ProdottoVersionedResource {
 
 ### Content-Type Versioning
 
+**Descrizione dell'esempio**: Implementazione di versioning tramite Content-Type utilizzando media type personalizzati. Questo approccio sfrutta il content negotiation HTTP standard, permettendo ai client di specificare la versione desiderata tramite l'header Accept. L'esempio mostra l'uso di vendor-specific media types (application/vnd.api.v1+json) e fallback alla versione più recente.
+
 ```java
 @Path("/prodotti")
 public class ProdottoContentTypeVersioned {
@@ -591,6 +611,8 @@ public class ProdottoContentTypeVersioned {
 ## Rate Limiting
 
 ### Implementazione con Filter
+
+**Descrizione dell'esempio**: Implementazione completa di rate limiting tramite JAX-RS Filter. L'esempio mostra come creare un filtro riusabile che intercetta le richieste, identifica i client tramite API key, JWT o IP address, applica limiti configurabili per finestra temporale, gestisce risposte 429 Too Many Requests con header informativi, e include un'annotazione custom per configurare i limiti.
 
 ```java
 @Provider
@@ -698,6 +720,8 @@ public @interface RateLimited {
 
 ### Uso del Rate Limiting
 
+**Descrizione dell'esempio**: Applicazione pratica del rate limiting a diversi endpoint con configurazioni differenziate. L'esempio mostra come applicare limiti default a livello di classe (1000 req/ora), override per operazioni specifiche come POST con limiti più restrittivi (10 req/minuto), e limiti personalizzati per operazioni costose come le ricerche (100 req/minuto).
+
 ```java
 @Path("/api/prodotti")
 @RateLimited(requestsPerWindow = 1000, windowSizeSeconds = 3600) // Default per tutta la classe
@@ -732,6 +756,8 @@ public class ProdottoResource {
 ## Monitoring e Metriche
 
 ### Filter per Metriche
+
+**Descrizione dell'esempio**: Implementazione di un filtro per il monitoraggio e la raccolta di metriche delle API REST. L'esempio mostra come intercettare richieste e risposte per misurare performance, contare richieste per endpoint e metodo HTTP, registrare tempi di risposta, categorizzare per status code, e integrare con sistemi di monitoraggio per analisi delle performance e troubleshooting.
 
 ```java
 @Provider

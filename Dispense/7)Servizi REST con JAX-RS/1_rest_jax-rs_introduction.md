@@ -29,6 +29,224 @@ Questo è il principio chiave di REST e si articola in quattro sotto-vincoli:
 * **Messaggi Auto-descrittivi**: Ogni messaggio (richiesta/risposta) contiene abbastanza informazioni per descrivere come processarlo. Ad esempio, l'header `Content-Type` specifica il formato del corpo del messaggio.
 * **HATEOAS (Hypermedia as the Engine of Application State)**: Principio avanzato secondo cui la rappresentazione di una risorsa dovrebbe contenere link (hypermedia) ad altre azioni o risorse correlate, permettendo al client di "scoprire" dinamicamente come navigare l'API.
 
+## HATEOAS (Hypermedia as the Engine of Application State)
+
+**HATEOAS** è uno dei vincoli architetturali più sofisticati e spesso sottovalutati di REST. Il principio stabilisce che l'applicazione client deve essere guidata esclusivamente attraverso i link ipermediali forniti dinamicamente dal server nelle risposte, senza dover conoscere a priori la struttura dell'API.
+
+### Concetti Chiave di HATEOAS
+
+#### 1. **Hypermedia Controls**
+
+I controlli ipermediali sono link e form che descrivono le azioni disponibili per il client in un determinato stato dell'applicazione. Questi includono:
+
+* **Link**: Collegamenti ad altre risorse o azioni (`rel`, `href`, `method`)
+* **Form**: Descrizioni di come inviare dati per modificare lo stato
+* **Affordances**: Indicazioni su cosa il client può fare in un dato momento
+
+#### 2. **Discoverable API**
+
+Con HATEOAS, l'API diventa auto-descrittiva. Il client inizia da un singolo punto di ingresso (spesso chiamato "root" o "entry point") e da lì può scoprire tutte le funzionalità disponibili seguendo i link forniti.
+
+#### 3. **Loose Coupling**
+
+Il client non ha bisogno di conoscere gli URL specifici delle risorse. Questo riduce l'accoppiamento tra client e server, rendendo l'API più flessibile e evolvibile.
+
+### Esempio Pratico di HATEOAS
+
+Consideriamo un'API per la gestione di ordini:
+
+**Richiesta iniziale:**
+
+```http
+GET /api/ordini/123
+Accept: application/json
+```
+
+**Risposta con HATEOAS:**
+
+```json
+{
+  "id": 123,
+  "stato": "in_elaborazione",
+  "totale": 99.99,
+  "dataCreazione": "2024-10-13T10:30:00Z",
+  "articoli": [
+    {
+      "prodottoId": 456,
+      "quantita": 2,
+      "prezzo": 49.99
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/ordini/123",
+      "method": "GET"
+    },
+    "update": {
+      "href": "/api/ordini/123",
+      "method": "PUT",
+      "title": "Aggiorna ordine"
+    },
+    "cancel": {
+      "href": "/api/ordini/123/annulla",
+      "method": "POST",
+      "title": "Annulla ordine"
+    },
+    "customer": {
+      "href": "/api/clienti/789",
+      "method": "GET",
+      "title": "Visualizza cliente"
+    },
+    "payment": {
+      "href": "/api/ordini/123/pagamento",
+      "method": "POST",
+      "title": "Procedi al pagamento"
+    }
+  }
+}
+```
+
+#### Navigazione Dinamica
+
+Il client può ora:
+
+1. **Seguire il link "customer"** per ottenere i dettagli del cliente
+2. **Utilizzare il link "cancel"** per annullare l'ordine
+3. **Procedere al pagamento** tramite il link "payment"
+
+Se l'ordine fosse in uno stato diverso (es. "spedito"), i link disponibili sarebbero differenti:
+
+```json
+{
+  "id": 123,
+  "stato": "spedito",
+  "totale": 99.99,
+  "_links": {
+    "self": {
+      "href": "/api/ordini/123"
+    },
+    "tracking": {
+      "href": "/api/ordini/123/tracking",
+      "method": "GET",
+      "title": "Traccia spedizione"
+    },
+    "return": {
+      "href": "/api/ordini/123/reso",
+      "method": "POST",
+      "title": "Richiedi reso"
+    }
+  }
+}
+```
+
+### Implementazione HATEOAS con JAX-RS
+
+```java
+@Path("/ordini")
+public class OrdineResource {
+    
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOrdine(@PathParam("id") Long id, @Context UriInfo uriInfo) {
+        Ordine ordine = ordineService.findById(id);
+        
+        // Creazione della rappresentazione con link
+        OrdineDTO dto = new OrdineDTO(ordine);
+        
+        // Aggiunta link dinamici basati sullo stato
+        addHateoasLinks(dto, ordine, uriInfo);
+        
+        return Response.ok(dto).build();
+    }
+    
+    private void addHateoasLinks(OrdineDTO dto, Ordine ordine, UriInfo uriInfo) {
+        // Link self sempre presente
+        dto.addLink("self", 
+            uriInfo.getAbsolutePathBuilder().build().toString(), 
+            "GET");
+        
+        // Link condizionali basati sullo stato
+        switch (ordine.getStato()) {
+            case IN_ELABORAZIONE:
+                dto.addLink("update",
+                    uriInfo.getAbsolutePathBuilder().build().toString(),
+                    "PUT");
+                dto.addLink("cancel",
+                    uriInfo.getAbsolutePathBuilder().path("annulla").build().toString(),
+                    "POST");
+                dto.addLink("payment",
+                    uriInfo.getAbsolutePathBuilder().path("pagamento").build().toString(),
+                    "POST");
+                break;
+                
+            case SPEDITO:
+                dto.addLink("tracking",
+                    uriInfo.getAbsolutePathBuilder().path("tracking").build().toString(),
+                    "GET");
+                dto.addLink("return",
+                    uriInfo.getAbsolutePathBuilder().path("reso").build().toString(),
+                    "POST");
+                break;
+        }
+        
+        // Link a risorse correlate
+        dto.addLink("customer",
+            uriInfo.getBaseUriBuilder().path("clienti").path(ordine.getClienteId().toString()).build().toString(),
+            "GET");
+    }
+}
+```
+
+### Vantaggi di HATEOAS
+
+1. **Evolvibilità dell'API**: Gli URL possono cambiare senza rompere i client
+2. **Auto-documentazione**: L'API descrive se stessa attraverso i link
+3. **Controllo dello stato**: Il server guida il client attraverso i workflow
+4. **Riduzione degli errori**: Il client non può eseguire azioni non permesse
+5. **Loose coupling**: Minore dipendenza tra client e server
+
+### Sfide e Considerazioni
+
+1. **Complessità aggiuntiva**: Richiede più logica lato server e client
+2. **Overhead**: Aumenta la dimensione delle risposte
+3. **Caching**: I link dinamici possono complicare la cache
+4. **Supporto client**: Non tutti i framework client supportano nativamente HATEOAS
+5. **Standardizzazione**: Esistono diversi formati (HAL, JSON-LD, Siren)
+
+### Standard e Formati Comuni
+
+#### HAL (Hypertext Application Language)
+
+```json
+{
+  "id": 123,
+  "stato": "in_elaborazione",
+  "_links": {
+    "self": { "href": "/ordini/123" },
+    "cancel": { "href": "/ordini/123/annulla" }
+  },
+  "_embedded": {
+    "articoli": [...]
+  }
+}
+```
+
+#### JSON-LD (JSON for Linked Data)
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Order",
+  "@id": "/ordini/123",
+  "orderStatus": "Processing",
+  "potentialAction": {
+    "@type": "CancelAction",
+    "target": "/ordini/123/annulla"
+  }
+}
+```
+
 ### 5. Sistema a Livelli (Layered System)
 
 L'architettura può essere composta da più livelli (es. proxy, gateway, load balancer) che si interpongono tra il client e il server finale. Il client non ha bisogno di sapere con quale server sta comunicando direttamente.
@@ -96,5 +314,5 @@ public class UtenteResource {
 | **Idempotente**               | Un'operazione che produce lo stesso risultato se eseguita una o più volte (es. `PUT` o `DELETE`). `POST` non è idempotente.              |
 | **Sicuro (Safe)**             | Un'operazione che non modifica lo stato della risorsa sul server (es. `GET`, `HEAD`).                                                  |
 | **Content Negotiation**       | Il processo con cui client e server si accordano sul formato della rappresentazione da scambiare (es. tramite header `Accept` e `Content-Type`). |
-| **HATEOAS**                   | Hypermedia as the Engine of Application State. L'idea che una risposta REST debba contenere link per guidare il client nelle interazioni successive. |
+| **HATEOAS**                   | Hypermedia as the Engine of Application State. Principio REST secondo cui le risposte del server devono contenere link ipermediali (hypermedia controls) che guidano dinamicamente il client attraverso le azioni disponibili e i possibili stati dell'applicazione, rendendo l'API auto-descrittiva e discoverable. |
 | **JAX-RS**                    | La specifica Java EE per la creazione di servizi web RESTful.                                                                          |
