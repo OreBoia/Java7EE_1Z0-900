@@ -312,7 +312,7 @@ public Response getDatiSensibili() {
 
 ### Teoria del Content Negotiation
 
-Il **Content Negotiation** è un meccanismo HTTP che permette al client e al server di concordare il formato più appropriato per i dati scambiati. Questo processo è fondamentale per:
+Il **Content Negotiation** è un meccanismo HTTP che permette al client e al server di concordare il formato più appropriato per i dati scambiati.
 
 #### Principi del Content Negotiation
 

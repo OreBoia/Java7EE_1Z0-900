@@ -505,16 +505,19 @@ L'**integrazione** dell'exception handling negli endpoint REST richiede la consi
 #### Layer Responsibility
 
 **Presentation Layer** (JAX-RS Endpoints):
+
 - Validazione parametri HTTP
 - Gestione autenticazione/autorizzazione
 - Trasformazione eccezioni business → HTTP
 
 **Business Layer** (Service Classes):
+
 - Logica di dominio
 - Validazione business rules
 - Coordinamento transazioni
 
 **Persistence Layer** (Repository/DAO):
+
 - Gestione database
 - Constraint violations
 - Transaction management
