@@ -98,29 +98,6 @@ L'Expression Language (EL) è il linguaggio usato nelle pagine Facelets per coll
 </html>
 ```
 
-### Esempio di Pagina di Login (`login.xhtml`)
-
-```xhtml
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-<h:head>
-    <title>Login</title>
-</h:head>
-<h:body>
-    <h:form>
-        <h:panelGrid columns="2">
-            Nome Utente: <h:inputText id="username" value="#{utenteBean.nome}" required="true" />
-            Password: <h:inputSecret id="password" value="#{utenteBean.password}" required="true" />
-        </h:panelGrid>
-        <h:commandButton value="Login" action="#{utenteBean.login}" />
-        <br/>
-        <h:messages style="color:red;" />
-    </h:form>
-</h:body>
-</html>
-```
-
 ## Scopes dei Backing Bean
 
 Lo **scope** di un backing bean definisce il suo ciclo di vita, ovvero per quanto tempo l'istanza del bean esisterà e sarà accessibile. La scelta dello scope corretto è fondamentale per il corretto funzionamento e l'efficienza dell'applicazione. Con l'integrazione di CDI, si usano le annotazioni di scope di CDI.
