@@ -1,6 +1,6 @@
 # Oracle Certified Expert, Java EE 7 Application Developer (1Z0-900)
 
-# Exam Simulation Quiz 1 of 3
+## Exam Simulation Quiz 1 of 3
 
 **Instructions:**
 
@@ -18,10 +18,10 @@
 
 What is the correct annotation to mark a field as the primary key in a JPA entity?
 
-- a) `@PrimaryKey`
-- b) `@Id`
-- c) `@Key`
-- d) `@Identifier`
+- a) `@Key`
+- b) `@Identifier`
+- c) `@Id`
+- d) `@PrimaryKey`
 
 ---
 
@@ -29,10 +29,10 @@ What is the correct annotation to mark a field as the primary key in a JPA entit
 
 Which fetch type should be used for a `@OneToMany` relationship to avoid loading unnecessary data?
 
-- a) `FetchType.EAGER`
-- b) `FetchType.LAZY`
-- c) `FetchType.AUTO`
-- d) `FetchType.IMMEDIATE`
+- a) `FetchType.IMMEDIATE`
+- b) `FetchType.AUTO`
+- c) `FetchType.EAGER`
+- d) `FetchType.LAZY`
 
 ---
 
@@ -55,10 +55,10 @@ public class Product {
 
 What is the purpose of the `@Version` annotation in this entity?
 
-- a) To track the JPA specification version
-- b) To implement optimistic locking for concurrency control
-- c) To enable versioning of the database schema
-- d) To create a version history table
+- a) To create a version history table
+- b) To enable versioning of the database schema
+- c) To track the JPA specification version
+- d) To implement optimistic locking for concurrency control
 
 ---
 
@@ -66,10 +66,10 @@ What is the purpose of the `@Version` annotation in this entity?
 
 Which method of EntityManager is used to merge a detached entity back into the persistence context?
 
-- a) `persist()`
-- b) `refresh()`
-- c) `merge()`
-- d) `attach()`
+- a) `merge()`
+- b) `persist()`
+- c) `attach()`
+- d) `refresh()`
 
 ---
 
@@ -88,10 +88,10 @@ public class Order {
 
 What happens when you call `entityManager.persist(order)` with this configuration?
 
-- a) Only the Order entity is persisted
-- b) The Order and all associated OrderItem entities are persisted
-- c) An exception is thrown because items must be persisted separately
-- d) The items are persisted but the Order is not
+- a) The items are persisted but the Order is not
+- b) An exception is thrown because items must be persisted separately
+- c) Only the Order entity is persisted
+- d) The Order and all associated OrderItem entities are persisted
 
 ---
 
@@ -99,10 +99,10 @@ What happens when you call `entityManager.persist(order)` with this configuratio
 
 In which state is an entity after calling `entityManager.remove(entity)`?
 
-- a) Detached
-- b) Managed
+- a) New
+- b) Detached
 - c) Removed
-- d) New
+- d) Managed
 
 ---
 
@@ -110,10 +110,10 @@ In which state is an entity after calling `entityManager.remove(entity)`?
 
 Which JPQL query syntax is correct for selecting all products with a price greater than 100?
 
-- a) `SELECT p FROM Product p WHERE price > 100`
-- b) `SELECT p FROM Product p WHERE p.price > 100`
-- c) `SELECT * FROM Product WHERE price > 100`
-- d) `SELECT p FROM Product WHERE p.price > 100`
+- a) `SELECT p FROM Product WHERE p.price > 100`
+- b) `SELECT * FROM Product WHERE price > 100`
+- c) `SELECT p FROM Product p WHERE p.price > 100`
+- d) `SELECT p FROM Product p WHERE price > 100`
 
 ---
 
@@ -121,10 +121,10 @@ Which JPQL query syntax is correct for selecting all products with a price great
 
 What is the correct way to define a named query in JPA?
 
-- a) Using `@NamedQuery` annotation on the entity class
-- b) Using `@Query` annotation on the entity class
-- c) Defining it in the `web.xml` file
-- d) Using `@EntityQuery` annotation
+- a) Using `@EntityQuery` annotation
+- b) Defining it in the `web.xml` file
+- c) Using `@Query` annotation on the entity class
+- d) Using `@NamedQuery` annotation on the entity class
 
 ---
 
@@ -146,10 +146,10 @@ public class Employee {
 
 What is the purpose of the `@Temporal` annotation?
 
-- a) To specify how temporal (date/time) types should be persisted to the database
-- b) To enable time-based caching
-- c) To set expiration times for entities
-- d) To track entity modification timestamps
+- a) To track entity modification timestamps
+- b) To set expiration times for entities
+- c) To specify how temporal (date/time) types should be persisted to the database
+- d) To enable time-based caching
 
 ---
 
@@ -157,10 +157,10 @@ What is the purpose of the `@Temporal` annotation?
 
 Which transaction attribute in EJB causes a transaction to be suspended if one exists?
 
-- a) `REQUIRED`
-- b) `REQUIRES_NEW`
+- a) `MANDATORY`
+- b) `REQUIRED`
 - c) `NOT_SUPPORTED`
-- d) `MANDATORY`
+- d) `REQUIRES_NEW`
 
 ---
 
@@ -181,10 +181,10 @@ public class CalculatorService {
 
 What will happen if two different clients call `increment()` on this bean?
 
-- a) Both clients will always get different values
-- b) Both clients might get the same value (e.g., both get 1)
-- c) A concurrency exception will be thrown
-- d) The container will serialize the calls automatically
+- a) The container will serialize the calls automatically
+- b) A concurrency exception will be thrown
+- c) Both clients might get the same value (e.g., both get 1)
+- d) Both clients will always get different values
 
 ---
 
@@ -192,10 +192,10 @@ What will happen if two different clients call `increment()` on this bean?
 
 Which type of EJB maintains conversational state with a specific client?
 
-- a) Stateless Session Bean
-- b) Stateful Session Bean
-- c) Singleton Session Bean
-- d) Message-Driven Bean
+- a) Message-Driven Bean
+- b) Singleton Session Bean
+- c) Stateful Session Bean
+- d) Stateless Session Bean
 
 ---
 
@@ -219,10 +219,10 @@ public class ShoppingCart {
 
 What is the effect of the `@Remove` annotation on the `checkout()` method?
 
-- a) It removes items from the cart
-- b) It causes the bean instance to be removed after the method completes
-- c) It deletes data from the database
-- d) It has no effect; it's just documentation
+- a) It deletes data from the database
+- b) It has no effect; it's just documentation
+- c) It removes items from the cart
+- d) It causes the bean instance to be removed after the method completes
 
 ---
 
@@ -230,10 +230,10 @@ What is the effect of the `@Remove` annotation on the `checkout()` method?
 
 Which annotation is used to configure transaction attributes in EJB?
 
-- a) `@Transaction`
-- b) `@TransactionAttribute`
-- c) `@Transactional`
-- d) `@TxAttribute`
+- a) `@TxAttribute`
+- b) `@Transactional`
+- c) `@TransactionAttribute`
+- d) `@Transaction`
 
 ---
 
@@ -241,10 +241,10 @@ Which annotation is used to configure transaction attributes in EJB?
 
 What is the default transaction attribute for EJB methods if not explicitly specified?
 
-- a) `REQUIRED`
-- b) `REQUIRES_NEW`
+- a) `NEVER`
+- b) `REQUIRED`
 - c) `NOT_SUPPORTED`
-- d) `NEVER`
+- d) `REQUIRES_NEW`
 
 ---
 
@@ -270,10 +270,10 @@ public class ConfigService {
 
 What is the purpose of `@Lock` annotations in this Singleton bean?
 
-- a) To enable database locking
-- b) To control concurrent access to bean methods
-- c) To implement pessimistic locking
-- d) To prevent memory leaks
+- a) To implement pessimistic locking
+- b) To prevent memory leaks
+- c) To enable database locking
+- d) To control concurrent access to bean methods
 
 ---
 
@@ -281,10 +281,10 @@ What is the purpose of `@Lock` annotations in this Singleton bean?
 
 Which annotation makes an EJB method execute asynchronously?
 
-- a) `@Async`
-- b) `@Asynchronous`
-- c) `@AsyncMethod`
-- d) `@Background`
+- a) `@Background`
+- b) `@AsyncMethod`
+- c) `@Asynchronous`
+- d) `@Async`
 
 ---
 
@@ -292,10 +292,10 @@ Which annotation makes an EJB method execute asynchronously?
 
 What type of EJB should be used to process JMS messages?
 
-- a) Stateless Session Bean
-- b) Stateful Session Bean
-- c) Message-Driven Bean
-- d) Singleton Session Bean
+- a) Singleton Session Bean
+- b) Message-Driven Bean
+- c) Stateful Session Bean
+- d) Stateless Session Bean
 
 ---
 
@@ -317,10 +317,10 @@ public class LogService {
 
 Why might you use `REQUIRES_NEW` for a logging service?
 
-- a) To improve performance
-- b) To ensure logs are saved even if the calling transaction rolls back
-- c) To enable parallel processing
-- d) It's required for all Stateless beans
+- a) It's required for all Stateless beans
+- b) To improve performance
+- c) To ensure logs are saved even if the calling transaction rolls back
+- d) To enable parallel processing
 
 ---
 
@@ -328,10 +328,10 @@ Why might you use `REQUIRES_NEW` for a logging service?
 
 Which lifecycle callback is called when an EJB instance is created but before the first business method?
 
-- a) `@PreConstruct`
+- a) `@OnCreate`
 - b) `@PostConstruct`
-- c) `@PreInit`
-- d) `@OnCreate`
+- c) `@PreConstruct`
+- d) `@PreInit`
 
 ---
 
@@ -352,10 +352,10 @@ public class UserServlet extends HttpServlet {
 
 What does `loadOnStartup = 1` indicate?
 
-- a) The servlet will be loaded when the first request arrives
-- b) The servlet will be loaded and initialized when the application starts
-- c) The servlet can handle only one request at a time
-- d) The servlet will restart automatically if it crashes
+- a) The servlet will restart automatically if it crashes
+- b) The servlet can handle only one request at a time
+- c) The servlet will be loaded and initialized when the application starts
+- d) The servlet will be loaded when the first request arrives
 
 ---
 
@@ -363,10 +363,10 @@ What does `loadOnStartup = 1` indicate?
 
 Which method is called by the servlet container to initialize a servlet?
 
-- a) `service()`
-- b) `init()`
-- c) `doGet()`
-- d) `initialize()`
+- a) `initialize()`
+- b) `doGet()`
+- c) `init()`
+- d) `service()`
 
 ---
 
@@ -374,10 +374,10 @@ Which method is called by the servlet container to initialize a servlet?
 
 What is the correct way to forward a request from one servlet to another?
 
-- a) `response.forward("/other")`
+- a) `RequestDispatcher.forward(request, response, "/other")`
 - b) `request.getRequestDispatcher("/other").forward(request, response)`
 - c) `request.forward("/other")`
-- d) `RequestDispatcher.forward(request, response, "/other")`
+- d) `response.forward("/other")`
 
 ---
 
@@ -407,10 +407,10 @@ public class AsyncServlet extends HttpServlet {
 
 What is the benefit of using asynchronous processing in this servlet?
 
-- a) It makes the code run faster
-- b) It frees up the request thread to handle other requests
-- c) It enables multi-threading automatically
-- d) It prevents timeout exceptions
+- a) It prevents timeout exceptions
+- b) It enables multi-threading automatically
+- c) It frees up the request thread to handle other requests
+- d) It makes the code run faster
 
 ---
 
@@ -418,10 +418,10 @@ What is the benefit of using asynchronous processing in this servlet?
 
 Which scope stores attributes that are shared across all users of the application?
 
-- a) Request scope
+- a) Page scope
 - b) Session scope
-- c) Application scope (ServletContext)
-- d) Page scope
+- c) Request scope
+- d) Application scope (ServletContext)
 
 ---
 
@@ -431,10 +431,10 @@ Which scope stores attributes that are shared across all users of the applicatio
 
 Which EL expression correctly accesses a request parameter named "id"?
 
-- a) `${request.id}`
-- b) `${param.id}`
-- c) `${requestScope.id}`
-- d) `${request.getParameter("id")}`
+- a) `${requestScope.id}`
+- b) `${request.getParameter("id")}`
+- c) `${param.id}`
+- d) `${request.id}`
 
 ---
 
@@ -449,10 +449,10 @@ Which EL expression correctly accesses a request parameter named "id"?
 
 What does this JSTL code do?
 
-- a) Iterates over a collection of products and displays their name and price
+- a) Sorts products by name
 - b) Creates a new collection of products
 - c) Filters products by price
-- d) Sorts products by name
+- d) Iterates over a collection of products and displays their name and price
 
 ---
 
@@ -460,10 +460,10 @@ What does this JSTL code do?
 
 Which JSP directive is used to include another JSP file at translation time?
 
-- a) `<jsp:include>`
+- a) `<jsp:forward>`
 - b) `<%@ include %>`
-- c) `<c:include>`
-- d) `<jsp:forward>`
+- c) `<jsp:include>`
+- d) `<c:include>`
 
 ---
 
@@ -471,10 +471,10 @@ Which JSP directive is used to include another JSP file at translation time?
 
 What is the purpose of the `<%@ page errorPage="error.jsp" %>` directive?
 
-- a) To redirect all errors to error.jsp
-- b) To specify which page to display if an exception occurs
-- c) To prevent errors from occurring
-- d) To log errors to error.jsp
+- a) To log errors to error.jsp
+- b) To prevent errors from occurring
+- c) To specify which page to display if an exception occurs
+- d) To redirect all errors to error.jsp
 
 ---
 
@@ -482,10 +482,10 @@ What is the purpose of the `<%@ page errorPage="error.jsp" %>` directive?
 
 Which implicit object in JSP represents the ServletConfig?
 
-- a) `application`
-- b) `config`
-- c) `pageContext`
-- d) `request`
+- a) `request`
+- b) `pageContext`
+- c) `config`
+- d) `application`
 
 ---
 
@@ -512,9 +512,9 @@ public class ProductResource {
 
 What HTTP status code is returned when a product is not found?
 
-- a) 400
+- a) 500
 - b) 404
-- c) 500
+- c) 400
 - d) 204
 
 ---
@@ -525,8 +525,8 @@ Which annotation is used to configure the base URI path for all REST resources i
 
 - a) `@ApplicationPath`
 - b) `@BasePath`
-- c) `@RestApplication`
-- d) `@RootPath`
+- c) `@RootPath`
+- d) `@RestApplication`
 
 ---
 
@@ -546,9 +546,9 @@ public Response createProduct(Product product) {
 
 What HTTP status code indicates successful resource creation?
 
-- a) 200 OK
+- a) 202 Accepted
 - b) 201 Created
-- c) 202 Accepted
+- c) 200 OK
 - d) 204 No Content
 
 ---
@@ -557,8 +557,8 @@ What HTTP status code indicates successful resource creation?
 
 Which annotation injects a query parameter into a JAX-RS method?
 
-- a) `@QueryParam`
-- b) `@RequestParam`
+- a) `@RequestParam`
+- b) `@QueryParam`
 - c) `@Param`
 - d) `@Query`
 
@@ -569,9 +569,9 @@ Which annotation injects a query parameter into a JAX-RS method?
 What is the purpose of `@Produces` annotation in JAX-RS?
 
 - a) To specify the HTTP method
-- b) To specify the media type the method can produce
-- c) To enable production mode
-- d) To create new resources
+- b) To enable production mode
+- c) To create new resources
+- d) To specify the media type the method can produce
 
 ---
 
@@ -590,9 +590,9 @@ public List<Product> searchProducts(
 What happens if the `minPrice` query parameter is not provided in the request?
 
 - a) An exception is thrown
-- b) The value is null
-- c) The value is 0.0
-- d) The method is not called
+- b) The value is 0.0
+- c) The method is not called
+- d) The value is null
 
 ---
 
@@ -623,10 +623,10 @@ public class CustomExceptionMapper implements ExceptionMapper<CustomException> {
 
 What is the purpose of this `ExceptionMapper`?
 
-- a) To prevent exceptions from occurring
-- b) To map exceptions to HTTP responses
-- c) To log exceptions
-- d) To validate input data
+- a) To log exceptions
+- b) To prevent exceptions from occurring
+- c) To validate input data
+- d) To map exceptions to HTTP responses
 
 ---
 
@@ -634,10 +634,10 @@ What is the purpose of this `ExceptionMapper`?
 
 Which class is used to build HTTP responses in JAX-RS?
 
-- a) `ResponseBuilder`
-- b) `Response`
-- c) `HttpResponse`
-- d) `RestResponse`
+- a) `Response`
+- b) `HttpResponse`
+- c) `RestResponse`
+- d) `ResponseBuilder`
 
 ---
 
@@ -714,8 +714,8 @@ public void onClose(Session session, CloseReason reason) {
 
 When is the `@OnClose` method called?
 
-- a) When the server shuts down
-- b) When a WebSocket connection is closed
+- a) When a WebSocket connection is closed
+- b) When the server shuts down
 - c) When a message fails to send
 - d) When the session times out
 
@@ -725,9 +725,9 @@ When is the `@OnClose` method called?
 
 What is the difference between WebSocket and traditional HTTP?
 
-- a) WebSocket is faster
-- b) WebSocket provides full-duplex communication over a single connection
-- c) HTTP is more secure
+- a) HTTP is more secure
+- b) WebSocket is faster
+- c) WebSocket provides full-duplex communication over a single connection
 - d) WebSocket only works with JSON
 
 ---
@@ -751,8 +751,8 @@ public class ProductBean implements Serializable {
 
 What does `faces-redirect=true` do in the navigation string?
 
-- a) Forces a client-side redirect
-- b) Enables AJAX navigation
+- a) Enables AJAX navigation
+- b) Forces a client-side redirect
 - c) Disables navigation
 - d) Creates a bookmark
 
@@ -773,8 +773,8 @@ Which JSF lifecycle phase validates user input?
 
 What is the purpose of the `immediate="true"` attribute on a JSF component?
 
-- a) Makes the component render faster
-- b) Processes the component in the Apply Request Values phase instead of later phases
+- a) Processes the component in the Apply Request Values phase instead of later phases
+- b) Makes the component render faster
 - c) Enables AJAX for the component
 - d) Makes the component required
 
@@ -792,9 +792,9 @@ What is the purpose of the `immediate="true"` attribute on a JSF component?
 
 What does the `<f:ajax>` tag enable?
 
-- a) Synchronous form submission
+- a) Form validation
 - b) Asynchronous partial page updates
-- c) Form validation
+- c) Synchronous form submission
 - d) Security features
 
 ---
@@ -803,10 +803,10 @@ What does the `<f:ajax>` tag enable?
 
 Which annotation is used to create a CDI-managed JSF backing bean?
 
-- a) `@ManagedBean`
-- b) `@Named`
-- c) `@Bean`
-- d) `@BackingBean`
+- a) `@Bean`
+- b) `@BackingBean`
+- c) `@Named`
+- d) `@ManagedBean`
 
 ---
 
@@ -839,9 +839,9 @@ What is the simplified API feature demonstrated here?
 
 Which messaging model ensures that only one consumer receives each message?
 
-- a) Publish-Subscribe
+- a) Topic
 - b) Point-to-Point (Queue)
-- c) Topic
+- c) Publish-Subscribe
 - d) Broadcast
 
 ---
@@ -876,10 +876,10 @@ What type of bean is used to consume JMS messages asynchronously?
 
 In JMS 2.0, which class replaces the need for creating Connection, Session, and MessageProducer separately?
 
-- a) `JMSSimple`
-- b) `JMSContext`
-- c) `JMSProducer`
-- d) `JMSHelper`
+- a) `JMSContext`
+- b) `JMSProducer`
+- c) `JMSHelper`
+- d) `JMSSimple`
 
 ---
 
@@ -888,9 +888,9 @@ In JMS 2.0, which class replaces the need for creating Connection, Session, and 
 What is the difference between durable and non-durable subscriptions in JMS?
 
 - a) Durable subscriptions are faster
-- b) Durable subscriptions retain messages for disconnected subscribers
-- c) Non-durable subscriptions are more reliable
-- d) There is no difference
+- b) Non-durable subscriptions are more reliable
+- c) There is no difference
+- d) Durable subscriptions retain messages for disconnected subscribers
 
 ---
 
@@ -917,9 +917,9 @@ public class ReportService {
 
 Who can execute the `getPublicReports()` method?
 
-- a) Only ADMIN
-- b) Only ADMIN and MANAGER
-- c) Everyone (authenticated or not)
+- a) Only ADMIN and MANAGER
+- b) Everyone (authenticated or not)
+- c) Only ADMIN
 - d) Only authenticated users
 
 ---
@@ -928,8 +928,8 @@ Who can execute the `getPublicReports()` method?
 
 Which annotation restricts access to a resource based on user roles?
 
-- a) `@Secured`
-- b) `@RolesAllowed`
+- a) `@RolesAllowed`
+- b) `@Secured`
 - c) `@SecurityRole`
 - d) `@Authorize`
 
@@ -939,9 +939,9 @@ Which annotation restricts access to a resource based on user roles?
 
 What does `@DenyAll` annotation do?
 
-- a) Denies all network traffic
+- a) Logs all access attempts
 - b) Prevents any user from accessing the method
-- c) Logs all access attempts
+- c) Denies all network traffic
 - d) Requires authentication
 
 ---
@@ -999,9 +999,9 @@ public void processDataAsync() {
 What is the advantage of using `ManagedExecutorService` over standard Java `ExecutorService`?
 
 - a) It's faster
-- b) It propagates Java EE context (security, transactions) to the spawned threads
-- c) It supports more concurrent threads
-- d) It's required by the specification
+- b) It's required by the specification
+- c) It propagates Java EE context (security, transactions) to the spawned threads
+- d) It supports more concurrent threads
 
 ---
 
@@ -1020,10 +1020,10 @@ Which resource is used to schedule tasks at fixed intervals in Java EE?
 
 What does `ManagedThreadFactory` provide?
 
-- a) Automatic thread pooling
-- b) Context-aware threads managed by the container
-- c) Thread synchronization
-- d) Thread monitoring
+- a) Context-aware threads managed by the container
+- b) Thread synchronization
+- c) Thread monitoring
+- d) Automatic thread pooling
 
 ---
 
@@ -1054,10 +1054,10 @@ What does this code do?
 
 What is `ContextService` used for in Java EE Concurrency Utilities?
 
-- a) To create new contexts
-- b) To capture and propagate Java EE context to non-managed threads
-- c) To manage servlet contexts
-- d) To configure security contexts
+- a) To manage servlet contexts
+- b) To configure security contexts
+- c) To capture and propagate Java EE context to non-managed threads
+- d) To create new contexts
 
 ---
 
@@ -1090,8 +1090,8 @@ What does `item-count="100"` mean in this batch job?
 
 Which interface must be implemented to create a batch item reader?
 
-- a) `ItemReader`
-- b) `BatchReader`
+- a) `BatchReader`
+- b) `ItemReader`
 - c) `ChunkReader`
 - d) `DataReader`
 
@@ -1101,10 +1101,10 @@ Which interface must be implemented to create a batch item reader?
 
 What is a `batchlet` in Java Batch API?
 
-- a) A small batch job
+- a) A type of item processor
 - b) A task-oriented step that doesn't use chunk processing
-- c) A type of item processor
-- d) A batch configuration file
+- c) A batch configuration file
+- d) A small batch job
 
 ---
 
@@ -1124,10 +1124,10 @@ public class DataProcessor implements ItemProcessor {
 
 What is the role of an `ItemProcessor` in batch processing?
 
-- a) To read items from a source
-- b) To write items to a destination
-- c) To transform/process items between reading and writing
-- d) To manage transactions
+- a) To write items to a destination
+- b) To transform/process items between reading and writing
+- c) To manage transactions
+- d) To read items from a source
 
 ---
 
@@ -1135,9 +1135,9 @@ What is the role of an `ItemProcessor` in batch processing?
 
 How do you start a batch job programmatically?
 
-- a) Using `JobOperator.start()`
+- a) Using `@Scheduled` annotation
 - b) Using `BatchRuntime.getJobOperator().start(jobXML, parameters)`
-- c) Using `@Scheduled` annotation
+- c) Using `JobOperator.start()`
 - d) Batch jobs start automatically
 
 ---
@@ -1146,57 +1146,57 @@ How do you start a batch job programmatically?
 
 ### JPA (1-10)
 
-1. b) `@Id`
-2. b) `FetchType.LAZY`
-3. b) To implement optimistic locking for concurrency control
-4. c) `merge()`
-5. b) The Order and all associated OrderItem entities are persisted
+1. c) `@Id`
+2. d) `FetchType.LAZY`
+3. d) To implement optimistic locking for concurrency control
+4. a) `merge()`
+5. d) The Order and all associated OrderItem entities are persisted
 6. c) Removed
-7. b) `SELECT p FROM Product p WHERE p.price > 100`
-8. a) Using `@NamedQuery` annotation on the entity class
-9. a) To specify how temporal (date/time) types should be persisted to the database
+7. c) `SELECT p FROM Product p WHERE p.price > 100`
+8. d) Using `@NamedQuery` annotation on the entity class
+9. c) To specify how temporal (date/time) types should be persisted to the database
 10. c) `NOT_SUPPORTED`
 
 ### EJB (11-20)
 
-11. b) Both clients might get the same value (e.g., both get 1)
-12. b) Stateful Session Bean
-13. b) It causes the bean instance to be removed after the method completes
-14. b) `@TransactionAttribute`
-15. a) `REQUIRED`
-16. b) To control concurrent access to bean methods
-17. b) `@Asynchronous`
-18. c) Message-Driven Bean
-19. b) To ensure logs are saved even if the calling transaction rolls back
+11. c) Both clients might get the same value (e.g., both get 1)
+12. c) Stateful Session Bean
+13. d) It causes the bean instance to be removed after the method completes
+14. c) `@TransactionAttribute`
+15. b) `REQUIRED`
+16. d) To control concurrent access to bean methods
+17. c) `@Asynchronous`
+18. b) Message-Driven Bean
+19. c) To ensure logs are saved even if the calling transaction rolls back
 20. b) `@PostConstruct`
 
 ### Servlets (21-25)
 
-21. b) The servlet will be loaded and initialized when the application starts
-22. b) `init()`
+21. c) The servlet will be loaded and initialized when the application starts
+22. c) `init()`
 23. b) `request.getRequestDispatcher("/other").forward(request, response)`
-24. b) It frees up the request thread to handle other requests
-25. c) Application scope (ServletContext)
+24. c) It frees up the request thread to handle other requests
+25. d) Application scope (ServletContext)
 
 ### JSP (26-30)
 
-26. b) `${param.id}`
-27. a) Iterates over a collection of products and displays their name and price
+26. c) `${param.id}`
+27. d) Iterates over a collection of products and displays their name and price
 28. b) `<%@ include %>`
-29. b) To specify which page to display if an exception occurs
-30. b) `config`
+29. c) To specify which page to display if an exception occurs
+30. c) `config`
 
 ### JAX-RS (31-40)
 
 31. b) 404
 32. a) `@ApplicationPath`
 33. b) 201 Created
-34. a) `@QueryParam`
-35. b) To specify the media type the method can produce
-36. c) The value is 0.0
+34. b) `@QueryParam`
+35. d) To specify the media type the method can produce
+36. b) The value is 0.0
 37. b) PUT
-38. b) To map exceptions to HTTP responses
-39. b) `Response`
+38. d) To map exceptions to HTTP responses
+39. a) `Response`
 40. b) Injects HTTP header values into method parameters
 
 ### WebSocket (41-45)
@@ -1204,47 +1204,47 @@ How do you start a batch job programmatically?
 41. b) `@ServerEndpoint`
 42. b) `@OnMessage`
 43. b) `session.getBasicRemote().sendText(message)`
-44. b) When a WebSocket connection is closed
-45. b) WebSocket provides full-duplex communication over a single connection
+44. a) When a WebSocket connection is closed
+45. c) WebSocket provides full-duplex communication over a single connection
 
 ### JSF (46-50)
 
-46. a) Forces a client-side redirect
+46. b) Forces a client-side redirect
 47. b) Process Validations
-48. b) Processes the component in the Apply Request Values phase instead of later phases
+48. a) Processes the component in the Apply Request Values phase instead of later phases
 49. b) Asynchronous partial page updates
-50. b) `@Named`
+50. c) `@Named`
 
 ### JMS (51-55)
 
 51. b) Using JMSContext instead of creating Connection and Session manually
 52. b) Point-to-Point (Queue)
 53. b) Message-Driven Bean
-54. b) `JMSContext`
-55. b) Durable subscriptions retain messages for disconnected subscribers
+54. a) `JMSContext`
+55. d) Durable subscriptions retain messages for disconnected subscribers
 
 ### Security (56-60)
 
-56. c) Everyone (authenticated or not)
-57. b) `@RolesAllowed`
+56. b) Everyone (authenticated or not)
+57. a) `@RolesAllowed`
 58. b) Prevents any user from accessing the method
 59. b) Restricts access to /admin/* URLs to users with the admin role
 60. b) `SecurityContext`
 
 ### Concurrency (61-65)
 
-61. b) It propagates Java EE context (security, transactions) to the spawned threads
+61. c) It propagates Java EE context (security, transactions) to the spawned threads
 62. b) `ManagedScheduledExecutorService`
-63. b) Context-aware threads managed by the container
+63. a) Context-aware threads managed by the container
 64. b) Runs cleanupTempFiles() every hour starting immediately
-65. b) To capture and propagate Java EE context to non-managed threads
+65. c) To capture and propagate Java EE context to non-managed threads
 
 ### Batch Processing (66-70)
 
 66. b) Commit the transaction after every 100 items
-67. a) `ItemReader`
+67. b) `ItemReader`
 68. b) A task-oriented step that doesn't use chunk processing
-69. c) To transform/process items between reading and writing
+69. b) To transform/process items between reading and writing
 70. b) Using `BatchRuntime.getJobOperator().start(jobXML, parameters)`
 
 ---

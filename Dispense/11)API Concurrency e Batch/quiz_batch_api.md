@@ -9,10 +9,6 @@ B) I job batch sono definiti usando file JSON
 C) Il Job Specification Language (JSL) usa XML per definire la struttura dei job  
 D) I job batch richiedono sempre l'interazione dell'utente
 
-**Risposta:** C
-
-**Spiegazione:** JSR 352 introduce la Batch API in Java EE 7, usando JSL (Job Specification Language) basato su XML per definire la struttura e il flusso dei job. I job batch sono processi che operano in background senza richiedere interazione utente.
-
 ---
 
 ## Domanda 2
@@ -23,10 +19,6 @@ A) Reader, Writer, Processor
 B) ItemReader, ItemProcessor, ItemWriter  
 C) DataReader, DataProcessor, DataWriter  
 D) InputReader, BusinessLogic, OutputWriter
-
-**Risposta:** B
-
-**Spiegazione:** Un chunk step è composto da tre componenti: `ItemReader` (legge i dati), `ItemProcessor` (elabora i dati) e `ItemWriter` (scrive i dati). Il processor è opzionale.
 
 ---
 
@@ -39,10 +31,6 @@ B) Il numero di elementi elaborati in una singola transazione
 C) Il numero massimo di errori tollerati  
 D) Il numero di thread da usare
 
-**Risposta:** B
-
-**Spiegazione:** `item-count` definisce la dimensione del chunk, ovvero quanti elementi vengono letti, processati e scritti in una singola transazione. Ad esempio, `item-count="10"` significa che ogni 10 elementi viene fatto un commit.
-
 ---
 
 ## Domanda 4
@@ -53,10 +41,6 @@ A) `ItemReader`
 B) `Chunk`  
 C) `Batchlet`  
 D) `SingleTask`
-
-**Risposta:** C
-
-**Spiegazione:** `Batchlet` (o task step) è un tipo di step più semplice che esegue un'operazione singola e coesa, utile per task come invio email, pulizia file, esecuzione comandi SQL.
 
 ---
 
@@ -69,10 +53,6 @@ B) Chiamando `new JobExecutor().run("jobName")`
 C) Con l'annotazione `@StartJob`  
 D) Attraverso un file di configurazione
 
-**Risposta:** A
-
-**Spiegazione:** Per avviare un job batch si usa l'interfaccia `JobOperator` ottenuta da `BatchRuntime.getJobOperator()`, quindi si chiama il metodo `start()` passando il nome del job e i parametri.
-
 ---
 
 ## Domanda 6
@@ -83,10 +63,6 @@ A) La validazione dei dati in input
 B) Il salvataggio periodico dello stato di avanzamento del job  
 C) Il controllo degli errori durante l'elaborazione  
 D) La verifica delle transazioni
-
-**Risposta:** B
-
-**Spiegazione:** Il checkpointing è il processo di salvataggio periodico dello stato di un job, che avviene alla fine di ogni transazione di un chunk. Permette di riavviare il job dal punto esatto in cui si è interrotto in caso di fallimento.
 
 ---
 
@@ -113,10 +89,6 @@ B) 10
 C) 50  
 D) Dipende dalla configurazione del database
 
-**Risposta:** C
-
-**Spiegazione:** Il parametro `item-count="50"` specifica che 50 elementi vengono letti, processati e scritti prima di committare la transazione.
-
 ---
 
 ## Domanda 8
@@ -127,10 +99,6 @@ A) Attraverso variabili d'ambiente
 B) Usando un oggetto `Properties` nel metodo `start()`  
 C) Con l'annotazione `@JobParameter`  
 D) Modificando il file XML JSL
-
-**Risposta:** B
-
-**Spiegazione:** I parametri vengono passati al job tramite un oggetto `Properties` nel metodo `start()` del `JobOperator`. Questi parametri sono poi accessibili tramite `JobContext` o con `@BatchProperty`.
 
 ---
 
@@ -143,10 +111,6 @@ B) `@Resource`
 C) `@BatchProperty`  
 D) `@JobProperty`
 
-**Risposta:** C
-
-**Spiegazione:** L'annotazione `@BatchProperty` permette di iniettare proprietà definite nel JSL o passate come parametri al job direttamente nei componenti batch.
-
 ---
 
 ## Domanda 10
@@ -158,10 +122,6 @@ B) `StepListener`
 C) `ChunkListener`  
 D) `ItemListener`
 
-**Risposta:** C
-
-**Spiegazione:** `ChunkListener` fornisce callback per intercettare eventi che avvengono prima (`beforeChunk()`), dopo (`afterChunk()`) e in caso di errore (`onError()`) durante l'elaborazione di un chunk.
-
 ---
 
 ## Domanda 11
@@ -172,10 +132,6 @@ A) Limitare il numero di elementi da processare
 B) Definire il numero massimo di elementi che possono essere saltati in caso di errore  
 C) Impostare il timeout del job  
 D) Configurare il numero di thread
-
-**Risposta:** B
-
-**Spiegazione:** `<skip-limit>` definisce il numero massimo di eccezioni skippable che possono verificarsi prima che il job fallisca. È usato insieme a `<skippable-exception-classes>`.
 
 ---
 
@@ -200,10 +156,6 @@ B) Accesso alle informazioni runtime del job corrente
 C) Configurazione del server  
 D) Lista di tutti i job in esecuzione
 
-**Risposta:** B
-
-**Spiegazione:** `JobContext` fornisce accesso al contesto runtime del job, includendo informazioni come il nome del job, l'ID di esecuzione, i parametri e dati transitori.
-
 ---
 
 ## Domanda 13
@@ -214,10 +166,6 @@ A) Retry elimina gli elementi con errori, skip li riprova
 B) Retry ritenta l'operazione fallita, skip salta l'elemento e continua  
 C) Retry è per lettura, skip per scrittura  
 D) Non c'è differenza
-
-**Risposta:** B
-
-**Spiegazione:** **Retry** permette di ritentare automaticamente un'operazione fallita (utile per errori temporanei), mentre **skip** permette di saltare elementi problematici e continuare con l'elaborazione degli altri.
 
 ---
 
@@ -230,10 +178,6 @@ B) La suddivisione di un dataset in parti elaborate in parallelo
 C) La separazione dei log del job  
 D) La distribuzione su più server
 
-**Risposta:** B
-
-**Spiegazione:** Il partitioning permette di suddividere un grande set di dati in partizioni più piccole ed elaborarle in parallelo su thread diversi, migliorando significativamente le performance.
-
 ---
 
 ## Domanda 15
@@ -244,10 +188,6 @@ A) Chiamando `start()` con lo stesso nome
 B) Usando `restart(executionId, parameters)`  
 C) Modificando il file XML e riavviando l'applicazione  
 D) Non è possibile riavviare un job fallito
-
-**Risposta:** B
-
-**Spiegazione:** Grazie al checkpointing, un job può essere riavviato usando `JobOperator.restart(executionId, parameters)`, che riprende l'esecuzione dall'ultimo checkpoint salvato.
 
 ---
 
@@ -260,10 +200,6 @@ B) STARTING, STARTED, STOPPING, STOPPED, COMPLETED, FAILED, ABANDONED
 C) SUCCESS, ERROR, WARNING  
 D) PENDING, ACTIVE, DONE
 
-**Risposta:** B
-
-**Spiegazione:** `BatchStatus` è un enum che rappresenta lo stato di un job o step e può avere i valori: `STARTING`, `STARTED`, `STOPPING`, `STOPPED`, `COMPLETED`, `FAILED`, `ABANDONED`.
-
 ---
 
 ## Domanda 17
@@ -274,10 +210,6 @@ A) `null`
 B) Un'eccezione  
 C) L'oggetto vuoto  
 D) `false`
-
-**Risposta:** A
-
-**Spiegazione:** Se un `ItemProcessor` restituisce `null`, l'elemento viene filtrato e non viene passato all'`ItemWriter`. Questo è il meccanismo standard per filtrare elementi durante l'elaborazione.
 
 ---
 
@@ -290,10 +222,6 @@ B) In `META-INF/batch-jobs/`
 C) Nella root del progetto  
 D) In `src/main/resources/`
 
-**Risposta:** B
-
-**Spiegazione:** I file JSL devono essere posizionati nella directory `META-INF/batch-jobs/` dell'applicazione. Il nome del file (senza estensione .xml) diventa l'identificatore del job.
-
 ---
 
 ## Domanda 19
@@ -304,10 +232,6 @@ A) `PartitionPlan`
 B) `PartitionMapper`  
 C) `PartitionAnalyzer`  
 D) `PartitionCollector`
-
-**Risposta:** B
-
-**Spiegazione:** `PartitionMapper` è l'interfaccia che permette di creare dinamicamente le partizioni per un step, restituendo un `PartitionPlan` con il numero di partizioni, thread e proprietà per ogni partizione.
 
 ---
 
@@ -320,10 +244,6 @@ B) Nel JSL con l'attributo `restartable="false"` sul tag `<job>`
 C) Chiamando `setRestartable(false)` su `JobOperator`  
 D) I job non sono mai riavviabili per default
 
-**Risposta:** B
-
-**Spiegazione:** Nel file JSL, si può specificare `restartable="false"` nell'elemento `<job>` per indicare che il job non può essere riavviato. Di default, i job sono riavviabili (`restartable="true"`).
-
 ---
 
 ## Domanda 21
@@ -334,10 +254,6 @@ A) `READ_COUNT`
 B) `WRITE_COUNT`  
 C) `EXECUTION_TIME`  
 D) `COMMIT_COUNT`
-
-**Risposta:** C
-
-**Spiegazione:** Il Batch Runtime fornisce metriche come `READ_COUNT`, `WRITE_COUNT`, `COMMIT_COUNT`, `ROLLBACK_COUNT`, `SKIP_COUNT`, `FILTER_COUNT`, ma non calcola automaticamente il tempo di esecuzione (che può essere derivato da `getStartTime()` e `getEndTime()` su `JobExecution`).
 
 ---
 
@@ -350,10 +266,6 @@ B) `<split>`
 C) `<concurrent>`  
 D) `<fork>`
 
-**Risposta:** B
-
-**Spiegazione:** L'elemento `<split>` nel JSL permette di eseguire più `<flow>` in parallelo su thread separati, utile per parallelizzare task indipendenti.
-
 ---
 
 ## Domanda 23
@@ -364,10 +276,6 @@ A) All'inizio dello step
 B) Alla fine di ogni chunk (prima del commit)  
 C) Solo in caso di errore  
 D) All'inizio di ogni chunk
-
-**Risposta:** B
-
-**Spiegazione:** Il metodo `checkpointInfo()` viene chiamato alla fine di ogni chunk, prima del commit della transazione, per salvare lo stato corrente del reader. Questo stato viene usato per riprendere dal punto corretto in caso di restart.
 
 ---
 
@@ -380,10 +288,6 @@ B) Solo `@BatchProperty`
 C) `@Resource` insieme a `@Named`  
 D) `@JobProperty`
 
-**Risposta:** A
-
-**Spiegazione:** Per iniettare una proprietà batch, si usano entrambe le annotazioni: `@Inject` per l'iniezione CDI e `@BatchProperty` per specificare quale proprietà batch iniettare.
-
 ---
 
 ## Domanda 25
@@ -394,6 +298,156 @@ A) `<switch>`
 B) `<decision>`  
 C) `<router>`  
 D) `<condition>`
+
+---
+
+## RISPOSTE E SPIEGAZIONI
+
+### Domanda 1
+
+**Risposta:** C
+
+**Spiegazione:** JSR 352 introduce la Batch API in Java EE 7, usando JSL (Job Specification Language) basato su XML per definire la struttura e il flusso dei job. I job batch sono processi che operano in background senza richiedere interazione utente.
+
+### Domanda 2
+
+**Risposta:** B
+
+**Spiegazione:** Un chunk step è composto da tre componenti: `ItemReader` (legge i dati), `ItemProcessor` (elabora i dati) e `ItemWriter` (scrive i dati). Il processor è opzionale.
+
+### Domanda 3
+
+**Risposta:** B
+
+**Spiegazione:** `item-count` definisce la dimensione del chunk, ovvero quanti elementi vengono letti, processati e scritti in una singola transazione. Ad esempio, `item-count="10"` significa che ogni 10 elementi viene fatto un commit.
+
+### Domanda 4
+
+**Risposta:** C
+
+**Spiegazione:** `Batchlet` (o task step) è un tipo di step più semplice che esegue un'operazione singola e coesa, utile per task come invio email, pulizia file, esecuzione comandi SQL.
+
+### Domanda 5
+
+**Risposta:** A
+
+**Spiegazione:** Per avviare un job batch si usa l'interfaccia `JobOperator` ottenuta da `BatchRuntime.getJobOperator()`, quindi si chiama il metodo `start()` passando il nome del job e i parametri.
+
+### Domanda 6
+
+**Risposta:** B
+
+**Spiegazione:** Il checkpointing è il processo di salvataggio periodico dello stato di un job, che avviene alla fine di ogni transazione di un chunk. Permette di riavviare il job dal punto esatto in cui si è interrotto in caso di fallimento.
+
+### Domanda 7
+
+**Risposta:** C
+
+**Spiegazione:** Il parametro `item-count="50"` specifica che 50 elementi vengono letti, processati e scritti prima di committare la transazione.
+
+### Domanda 8
+
+**Risposta:** B
+
+**Spiegazione:** I parametri vengono passati al job tramite un oggetto `Properties` nel metodo `start()` del `JobOperator`. Questi parametri sono poi accessibili tramite `JobContext` o con `@BatchProperty`.
+
+### Domanda 9
+
+**Risposta:** C
+
+**Spiegazione:** L'annotazione `@BatchProperty` permette di iniettare proprietà definite nel JSL o passate come parametri al job direttamente nei componenti batch.
+
+### Domanda 10
+
+**Risposta:** C
+
+**Spiegazione:** `ChunkListener` fornisce callback per intercettare eventi che avvengono prima (`beforeChunk()`), dopo (`afterChunk()`) e in caso di errore (`onError()`) durante l'elaborazione di un chunk.
+
+### Domanda 11
+
+**Risposta:** B
+
+**Spiegazione:** `<skip-limit>` definisce il numero massimo di eccezioni skippable che possono verificarsi prima che il job fallisca. È usato insieme a `<skippable-exception-classes>`.
+
+### Domanda 12
+
+**Risposta:** B
+
+**Spiegazione:** `JobContext` fornisce accesso al contesto runtime del job, includendo informazioni come il nome del job, l'ID di esecuzione, i parametri e dati transitori.
+
+### Domanda 13
+
+**Risposta:** B
+
+**Spiegazione:** **Retry** permette di ritentare automaticamente un'operazione fallita (utile per errori temporanei), mentre **skip** permette di saltare elementi problematici e continuare con l'elaborazione degli altri.
+
+### Domanda 14
+
+**Risposta:** B
+
+**Spiegazione:** Il partitioning permette di suddividere un grande set di dati in partizioni più piccole ed elaborarle in parallelo su thread diversi, migliorando significativamente le performance.
+
+### Domanda 15
+
+**Risposta:** B
+
+**Spiegazione:** Grazie al checkpointing, un job può essere riavviato usando `JobOperator.restart(executionId, parameters)`, che riprende l'esecuzione dall'ultimo checkpoint salvato.
+
+### Domanda 16
+
+**Risposta:** B
+
+**Spiegazione:** `BatchStatus` è un enum che rappresenta lo stato di un job o step e può avere i valori: `STARTING`, `STARTED`, `STOPPING`, `STOPPED`, `COMPLETED`, `FAILED`, `ABANDONED`.
+
+### Domanda 17
+
+**Risposta:** A
+
+**Spiegazione:** Se un `ItemProcessor` restituisce `null`, l'elemento viene filtrato e non viene passato all'`ItemWriter`. Questo è il meccanismo standard per filtrare elementi durante l'elaborazione.
+
+### Domanda 18
+
+**Risposta:** B
+
+**Spiegazione:** I file JSL devono essere posizionati nella directory `META-INF/batch-jobs/` dell'applicazione. Il nome del file (senza estensione .xml) diventa l'identificatore del job.
+
+### Domanda 19
+
+**Risposta:** B
+
+**Spiegazione:** `PartitionMapper` è l'interfaccia che permette di creare dinamicamente le partizioni per un step, restituendo un `PartitionPlan` con il numero di partizioni, thread e proprietà per ogni partizione.
+
+### Domanda 20
+
+**Risposta:** B
+
+**Spiegazione:** Nel file JSL, si può specificare `restartable="false"` nell'elemento `<job>` per indicare che il job non può essere riavviato. Di default, i job sono riavviabili (`restartable="true"`).
+
+### Domanda 21
+
+**Risposta:** C
+
+**Spiegazione:** Il Batch Runtime fornisce metriche come `READ_COUNT`, `WRITE_COUNT`, `COMMIT_COUNT`, `ROLLBACK_COUNT`, `SKIP_COUNT`, `FILTER_COUNT`, ma non calcola automaticamente il tempo di esecuzione (che può essere derivato da `getStartTime()` e `getEndTime()` su `JobExecution`).
+
+### Domanda 22
+
+**Risposta:** B
+
+**Spiegazione:** L'elemento `<split>` nel JSL permette di eseguire più `<flow>` in parallelo su thread separati, utile per parallelizzare task indipendenti.
+
+### Domanda 23
+
+**Risposta:** B
+
+**Spiegazione:** Il metodo `checkpointInfo()` viene chiamato alla fine di ogni chunk, prima del commit della transazione, per salvare lo stato corrente del reader. Questo stato viene usato per riprendere dal punto corretto in caso di restart.
+
+### Domanda 24
+
+**Risposta:** A
+
+**Spiegazione:** Per iniettare una proprietà batch, si usano entrambe le annotazioni: `@Inject` per l'iniezione CDI e `@BatchProperty` per specificare quale proprietà batch iniettare.
+
+### Domanda 25
 
 **Risposta:** B
 

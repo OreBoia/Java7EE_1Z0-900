@@ -34,9 +34,9 @@ public class UserBean {
 
 What scope does this bean have?
 
-- a) Application scope
-- b) Session scope
-- c) Request scope
+- a) Request scope
+- b) Application scope
+- c) Session scope
 - d) Conversation scope
 
 ---
@@ -46,9 +46,9 @@ What scope does this bean have?
 Which annotation is used to inject a CDI bean into another bean?
 
 - a) `@Resource`
-- b) `@Inject`
+- b) `@Bean`
 - c) `@Autowired`
-- d) `@Bean`
+- d) `@Inject`
 
 ---
 
@@ -76,10 +76,10 @@ public class PayPalProcessor implements PaymentProcessor {
 
 Which implementation will be injected by default without additional configuration?
 
-- a) PayPalProcessor
-- b) CreditCardProcessor
-- c) Both will be injected
-- d) Neither, a qualifier is required
+- a) Both will be injected
+- b) Neither, a qualifier is required
+- c) PayPalProcessor
+- d) CreditCardProcessor
 
 ---
 
@@ -87,9 +87,9 @@ Which implementation will be injected by default without additional configuratio
 
 What is the purpose of the `@Produces` annotation in CDI?
 
-- a) To produce factory methods for bean creation
-- b) To mark methods as HTTP endpoints
-- c) To enable serialization
+- a) To mark methods as HTTP endpoints
+- b) To enable serialization
+- c) To produce factory methods for bean creation
 - d) To create database connections
 
 ---
@@ -110,9 +110,9 @@ public class ConfigBean {
 How can you access the produced value in an EL expression?
 
 - a) `${ConfigBean.version}`
-- b) `${appVersion}`
-- c) `${produces.appVersion}`
-- d) `${config.version}`
+- b) `${config.version}`
+- c) `${appVersion}`
+- d) `${produces.appVersion}`
 
 ---
 
@@ -121,8 +121,8 @@ How can you access the produced value in an EL expression?
 Which CDI scope maintains state for the duration of a conversation?
 
 - a) `@RequestScoped`
-- b) `@SessionScoped`
-- c) `@ConversationScoped`
+- b) `@ConversationScoped`
+- c) `@SessionScoped`
 - d) `@DialogScoped`
 
 ---
@@ -143,10 +143,10 @@ public class LoggingInterceptor {
 
 What must be done to enable this interceptor?
 
-- a) Nothing, it's enabled by default
-- b) Add it to beans.xml
-- c) Annotate the target class with @EnableInterceptors
-- d) Register it in web.xml
+- a) Annotate the target class with @EnableInterceptors
+- b) Register it in web.xml
+- c) Nothing, it's enabled by default
+- d) Add it to beans.xml
 
 ---
 
@@ -154,8 +154,8 @@ What must be done to enable this interceptor?
 
 What is the purpose of `@Qualifier` annotation in CDI?
 
-- a) To mark beans as qualified for production
-- b) To disambiguate between multiple implementations of the same type
+- a) To disambiguate between multiple implementations of the same type
+- b) To mark beans as qualified for production
 - c) To enable bean validation
 - d) To specify database qualifiers
 
@@ -177,10 +177,10 @@ public void cleanup() {
 
 When is the `@PostConstruct` method called?
 
-- a) Before the bean constructor
-- b) After dependency injection is complete
-- c) Before each method invocation
-- d) When the application shuts down
+- a) Before each method invocation
+- b) When the application shuts down
+- c) Before the bean constructor
+- d) After dependency injection is complete
 
 ---
 
@@ -189,9 +189,9 @@ When is the `@PostConstruct` method called?
 Which CDI event mechanism allows beans to communicate without direct coupling?
 
 - a) `@Event` and `@Observer`
-- b) `@Fire` and `@Listen`
+- b) `@Publish` and `@Subscribe`
 - c) `@Observes` (for observer) and `Event<T>` (for firing)
-- d) `@Publish` and `@Subscribe`
+- d) `@Fire` and `@Listen`
 
 ---
 
@@ -217,10 +217,10 @@ public class CalculatorWS {
 
 Which method will be exposed as a web service operation?
 
-- a) Both add and subtract
-- b) Only add
-- c) Only subtract
-- d) Neither
+- a) Only add
+- b) Only subtract
+- c) Neither
+- d) Both add and subtract
 
 ---
 
@@ -229,9 +229,9 @@ Which method will be exposed as a web service operation?
 What protocol does SOAP use for message exchange?
 
 - a) Only HTTP
-- b) XML over various protocols (HTTP, SMTP, JMS, etc.)
-- c) JSON over HTTP
-- d) Binary over TCP
+- b) JSON over HTTP
+- c) Binary over TCP
+- d) XML over various protocols (HTTP, SMTP, JMS, etc.)
 
 ---
 
@@ -247,10 +247,10 @@ public class CalculatorClient extends Service {
 
 What tool is typically used to generate JAX-WS client code from WSDL?
 
-- a) `javac`
+- a) `jaxws-gen`
 - b) `wsimport`
-- c) `wsdl2java`
-- d) `jaxws-gen`
+- c) `javac`
+- d) `wsdl2java`
 
 ---
 
@@ -258,9 +258,9 @@ What tool is typically used to generate JAX-WS client code from WSDL?
 
 What does WSDL stand for?
 
-- a) Web Service Description Language
+- a) Wireless Service Data Link
 - b) Web Services Definition List
-- c) Wireless Service Data Link
+- c) Web Service Description Language
 - d) Web Socket Description Language
 
 ---
@@ -284,9 +284,9 @@ public class OrderService {
 
 What advantage does combining `@Stateless` and `@WebService` provide?
 
-- a) Better performance only
+- a) Required by specification
 - b) Automatic transaction management and pooling
-- c) Required by specification
+- c) Better performance only
 - d) No advantage, they cannot be combined
 
 ---
@@ -295,8 +295,8 @@ What advantage does combining `@Stateless` and `@WebService` provide?
 
 Which annotation is used to customize the XML representation of a Java class in JAXB?
 
-- a) `@XmlElement`
-- b) `@XmlType`
+- a) `@XmlType`
+- b) `@XmlElement`
 - c) `@XmlRootElement`
 - d) All of the above
 
@@ -306,10 +306,10 @@ Which annotation is used to customize the XML representation of a Java class in 
 
 What is MTOM in the context of JAX-WS?
 
-- a) A security protocol
-- b) Message Transmission Optimization Mechanism for efficient binary data transfer
-- c) A message routing protocol
-- d) A transaction coordination protocol
+- a) A transaction coordination protocol
+- b) A security protocol
+- c) Message Transmission Optimization Mechanism for efficient binary data transfer
+- d) A message routing protocol
 
 ---
 
@@ -322,9 +322,9 @@ private CalculatorService calculatorService;
 
 What does the `@WebServiceRef` annotation do?
 
-- a) Creates a web service
+- a) Exports a service reference
 - b) Injects a web service client proxy
-- c) Exports a service reference
+- c) Creates a web service
 - d) Registers a service endpoint
 
 ---
@@ -335,8 +335,8 @@ Which binding style is default in JAX-WS?
 
 - a) RPC/encoded
 - b) RPC/literal
-- c) Document/literal wrapped
-- d) Document/encoded
+- c) Document/encoded
+- d) Document/literal wrapped
 
 ---
 
@@ -344,8 +344,8 @@ Which binding style is default in JAX-WS?
 
 What is the purpose of a SOAP handler?
 
-- a) To handle HTTP connections
-- b) To intercept and modify SOAP messages
+- a) To intercept and modify SOAP messages
+- b) To handle HTTP connections
 - c) To generate WSDL
 - d) To manage transactions
 
@@ -371,10 +371,10 @@ public class User {
 
 Which validation constraint checks that a string is a valid email format?
 
-- a) `@Email`
-- b) `@ValidEmail`
-- c) `@EmailFormat`
-- d) `@Pattern`
+- a) `@ValidEmail`
+- b) `@Pattern`
+- c) `@Email`
+- d) `@EmailFormat`
 
 ---
 
@@ -382,10 +382,10 @@ Which validation constraint checks that a string is a valid email format?
 
 How do you programmatically validate a bean?
 
-- a) Using `Validator.validate(bean)`
+- a) Validation is always automatic
 - b) Using `ValidatorFactory` to get a `Validator` and call `validate()`
-- c) Using `@Valid` annotation
-- d) Validation is always automatic
+- c) Using `Validator.validate(bean)`
+- d) Using `@Valid` annotation
 
 ---
 
@@ -404,8 +404,8 @@ public class Order {
 
 What does the `@Valid` annotation on the `customer` field do?
 
-- a) Validates only the customer reference
-- b) Cascades validation to the Customer object's fields
+- a) Cascades validation to the Customer object's fields
+- b) Validates only the customer reference
 - c) Makes the customer field optional
 - d) Enables database validation
 
@@ -415,9 +415,9 @@ What does the `@Valid` annotation on the `customer` field do?
 
 Which annotation ensures a numeric value is within a range?
 
-- a) `@Range`
-- b) `@Between`
-- c) `@Min` and `@Max`
+- a) `@Between`
+- b) `@Min` and `@Max`
+- c) `@Range`
 - d) `@Size`
 
 ---
@@ -435,9 +435,9 @@ public Response updateUser(@PathParam("id") Long id, @Valid User user) {
 
 What happens if the user object fails validation in this JAX-RS method?
 
-- a) The method executes normally
-- b) A `ConstraintViolationException` is thrown
-- c) A 400 Bad Request is returned automatically
+- a) A 400 Bad Request is returned automatically
+- b) The method executes normally
+- c) A `ConstraintViolationException` is thrown
 - d) Nothing, validation is ignored in JAX-RS
 
 ---
@@ -456,10 +456,10 @@ JsonObject jsonObject = Json.createObjectBuilder()
 
 What does this code create?
 
-- a) A Java object
-- b) A JSON object
-- c) An XML document
-- d) A database record
+- a) An XML document
+- b) A database record
+- c) A JSON object
+- d) A Java object
 
 ---
 
@@ -467,10 +467,10 @@ What does this code create?
 
 Which API in Java EE 7 provides JSON processing capabilities?
 
-- a) JSON-B
+- a) Jackson
 - b) JSON-P (Java API for JSON Processing)
-- c) JAXB
-- d) Jackson
+- c) JSON-B
+- d) JAXB
 
 ---
 
@@ -484,8 +484,8 @@ String name = obj.getString("name");
 
 What is this approach called?
 
-- a) Streaming API
-- b) Object Model API
+- a) Object Model API
+- b) Streaming API
 - c) Binding API
 - d) Parser API
 
@@ -495,10 +495,10 @@ What is this approach called?
 
 Which method creates a JSON array using JSON-P?
 
-- a) `Json.createArray()`
-- b) `Json.createArrayBuilder()`
-- c) `Json.newArray()`
-- d) `JsonArray.create()`
+- a) `Json.createArrayBuilder()`
+- b) `Json.createArray()`
+- c) `JsonArray.create()`
+- d) `Json.newArray()`
 
 ---
 
@@ -516,10 +516,10 @@ while (parser.hasNext()) {
 
 What type of JSON processing is this?
 
-- a) Object Model API
+- a) DOM API
 - b) Streaming API
-- c) Binding API
-- d) DOM API
+- c) Object Model API
+- d) Binding API
 
 ---
 
@@ -543,8 +543,8 @@ public class Product {
 
 How do you execute this named query?
 
-- a) `em.createQuery("Product.findByCategory")`
-- b) `em.createNamedQuery("Product.findByCategory")`
+- a) `em.createNamedQuery("Product.findByCategory")`
+- b) `em.createQuery("Product.findByCategory")`
 - c) `em.executeQuery("Product.findByCategory")`
 - d) `em.findByName("Product.findByCategory")`
 
@@ -554,10 +554,10 @@ How do you execute this named query?
 
 What is the purpose of `@EntityGraph` in JPA 2.1?
 
-- a) To create entity diagrams
-- b) To control which attributes are fetched in a query
-- c) To define entity relationships
-- d) To generate database schemas
+- a) To define entity relationships
+- b) To generate database schemas
+- c) To control which attributes are fetched in a query
+- d) To create entity diagrams
 
 ---
 
@@ -581,9 +581,9 @@ public class PhoneNumberConverter implements AttributeConverter<PhoneNumber, Str
 
 What is the purpose of the `AttributeConverter`?
 
-- a) To convert between entity and DTO
+- a) To convert between different databases
 - b) To convert between Java attribute types and database column types
-- c) To convert between different databases
+- c) To convert between entity and DTO
 - d) To enable data encryption
 
 ---
@@ -592,8 +592,8 @@ What is the purpose of the `AttributeConverter`?
 
 Which lock mode in JPA forces a database lock to be acquired?
 
-- a) `LockModeType.OPTIMISTIC`
-- b) `LockModeType.PESSIMISTIC_WRITE`
+- a) `LockModeType.PESSIMISTIC_WRITE`
+- b) `LockModeType.OPTIMISTIC`
 - c) `LockModeType.READ`
 - d) `LockModeType.NONE`
 
@@ -611,10 +611,10 @@ TypedQuery<Product> query = em.createQuery(cq);
 
 What API is being used here?
 
-- a) JPQL
-- b) Native SQL
+- a) HQL
+- b) JPQL
 - c) Criteria API
-- d) HQL
+- d) Native SQL
 
 ---
 
@@ -622,8 +622,8 @@ What API is being used here?
 
 What happens when an entity is in the "detached" state?
 
-- a) It's still synchronized with the database
-- b) It's no longer managed by the EntityManager
+- a) It's no longer managed by the EntityManager
+- b) It's still synchronized with the database
 - c) It's automatically deleted
 - d) It cannot be used
 
@@ -644,10 +644,10 @@ public class Order {
 
 What does `orphanRemoval = true` do?
 
-- a) Removes null items from the list
-- b) Deletes OrderItem entities when removed from the collection
-- c) Prevents orphan entities
-- d) Optimizes database queries
+- a) Prevents orphan entities
+- b) Optimizes database queries
+- c) Deletes OrderItem entities when removed from the collection
+- d) Removes null items from the list
 
 ---
 
@@ -655,10 +655,10 @@ What does `orphanRemoval = true` do?
 
 Which persistence context type is used in container-managed transactions?
 
-- a) `PersistenceContextType.EXTENDED`
-- b) `PersistenceContextType.TRANSACTION`
-- c) `PersistenceContextType.APPLICATION`
-- d) `PersistenceContextType.REQUEST`
+- a) `PersistenceContextType.APPLICATION`
+- b) `PersistenceContextType.REQUEST`
+- c) `PersistenceContextType.TRANSACTION`
+- d) `PersistenceContextType.EXTENDED`
 
 ---
 
@@ -675,8 +675,8 @@ public class Product {
 
 What does this configuration create?
 
-- a) A unique constraint
-- b) A database index on category and name columns
+- a) A database index on category and name columns
+- b) A unique constraint
 - c) A foreign key
 - d) A primary key
 
@@ -686,10 +686,10 @@ What does this configuration create?
 
 What is the difference between `persist()` and `merge()` in EntityManager?
 
-- a) There is no difference
-- b) `persist()` is for new entities, `merge()` is for detached entities
-- c) `merge()` is faster
-- d) `persist()` works only with transactions
+- a) `persist()` works only with transactions
+- b) `merge()` is faster
+- c) `persist()` is for new entities, `merge()` is for detached entities
+- d) There is no difference
 
 ---
 
@@ -715,8 +715,8 @@ public class CounterBean {
 
 What does `ConcurrencyManagementType.BEAN` mean?
 
-- a) The container manages concurrency
-- b) The bean manages concurrency using Java synchronization
+- a) The bean manages concurrency using Java synchronization
+- b) The container manages concurrency
 - c) Concurrency is disabled
 - d) Multiple instances are created
 
@@ -738,10 +738,10 @@ public class EmailService {
 
 What is the return type for asynchronous methods that return results?
 
-- a) `void`
+- a) `CompletableFuture<T>`
 - b) `Future<T>`
-- c) `Callable<T>`
-- d) `CompletableFuture<T>`
+- c) `void`
+- d) `Callable<T>`
 
 ---
 
@@ -749,10 +749,10 @@ What is the return type for asynchronous methods that return results?
 
 Which timer type executes at fixed intervals?
 
-- a) Calendar-based timer
-- b) Interval timer
-- c) Single-action timer
-- d) Persistent timer
+- a) Persistent timer
+- b) Single-action timer
+- c) Interval timer
+- d) Calendar-based timer
 
 ---
 
@@ -773,10 +773,10 @@ public class BusinessService {
 
 What do the `@Exclude` annotations do?
 
-- a) Exclude the method from compilation
-- b) Prevent interceptors from being applied to this method
-- c) Make the method private
-- d) Disable transactions
+- a) Make the method private
+- b) Disable transactions
+- c) Prevent interceptors from being applied to this method
+- d) Exclude the method from compilation
 
 ---
 
@@ -784,10 +784,10 @@ What do the `@Exclude` annotations do?
 
 What is the purpose of `@DependsOn` annotation in Singleton beans?
 
-- a) To inject dependencies
-- b) To specify initialization order
-- c) To create circular dependencies
-- d) To enable caching
+- a) To create circular dependencies
+- b) To enable caching
+- c) To specify initialization order
+- d) To inject dependencies
 
 ---
 
@@ -809,9 +809,9 @@ public class NewsSubscriber implements MessageListener {
 
 What type of JMS destination is this MDB listening to?
 
-- a) Queue
+- a) Channel
 - b) Topic
-- c) Channel
+- c) Queue
 - d) Exchange
 
 ---
@@ -820,10 +820,10 @@ What type of JMS destination is this MDB listening to?
 
 Which transaction attribute suspends the current transaction and executes without a transaction?
 
-- a) `REQUIRED`
+- a) `NEVER`
 - b) `REQUIRES_NEW`
 - c) `NOT_SUPPORTED`
-- d) `NEVER`
+- d) `REQUIRED`
 
 ---
 
@@ -838,10 +838,10 @@ public void dailyCleanup() {
 
 What does `persistent = false` mean?
 
-- a) The timer doesn't survive server restarts
+- a) The timer doesn't write to database
 - b) The timer cannot be cancelled
 - c) The timer runs only once
-- d) The timer doesn't write to database
+- d) The timer doesn't survive server restarts
 
 ---
 
@@ -849,10 +849,10 @@ What does `persistent = false` mean?
 
 What is the maximum number of Singleton EJB instances per application?
 
-- a) Unlimited
-- b) One per JVM
+- a) One per JVM
+- b) Configurable
 - c) One per application
-- d) Configurable
+- d) Unlimited
 
 ---
 
@@ -871,9 +871,9 @@ public class CalculatorBean {
 What does `@LocalBean` indicate?
 
 - a) The bean is only accessible locally
-- b) The bean exposes a no-interface view
-- c) The bean stores local data
-- d) The bean is not distributed
+- b) The bean stores local data
+- c) The bean is not distributed
+- d) The bean exposes a no-interface view
 
 ---
 
@@ -895,10 +895,10 @@ public class EncodingFilter implements Filter {
 
 When are servlet filters executed?
 
-- a) After the servlet
-- b) Before and after the servlet
-- c) Only on errors
-- d) At server startup
+- a) At server startup
+- b) Only on errors
+- c) After the servlet
+- d) Before and after the servlet
 
 ---
 
@@ -906,9 +906,9 @@ When are servlet filters executed?
 
 Which listener interface is used to track session creation and destruction?
 
-- a) `ServletContextListener`
+- a) `ServletRequestListener`
 - b) `HttpSessionListener`
-- c) `ServletRequestListener`
+- c) `ServletContextListener`
 - d) `SessionLifecycleListener`
 
 ---
@@ -931,10 +931,10 @@ public class FileUploadServlet extends HttpServlet {
 
 What is the maximum file size allowed by this configuration?
 
-- a) 1MB
-- b) 5MB
-- c) 10MB
-- d) Unlimited
+- a) Unlimited
+- b) 10MB
+- c) 1MB
+- d) 5MB
 
 ---
 
@@ -942,8 +942,8 @@ What is the maximum file size allowed by this configuration?
 
 What method is used to include another resource's output in the response?
 
-- a) `RequestDispatcher.forward()`
-- b) `RequestDispatcher.include()`
+- a) `RequestDispatcher.include()`
+- b) `RequestDispatcher.forward()`
 - c) `response.include()`
 - d) `request.redirect()`
 
@@ -957,10 +957,10 @@ HttpSession session = request.getSession(false);
 
 What does the `false` parameter mean?
 
-- a) Create a new session
-- b) Don't create a new session if one doesn't exist
-- c) Invalidate the session
-- d) Make the session read-only
+- a) Invalidate the session
+- b) Make the session read-only
+- c) Don't create a new session if one doesn't exist
+- d) Create a new session
 
 ---
 
@@ -983,10 +983,10 @@ What does the `false` parameter mean?
 
 What component is used to display tabular data in JSF?
 
-- a) `<h:table>`
+- a) `<h:list>`
 - b) `<h:dataTable>`
-- c) `<h:grid>`
-- d) `<h:list>`
+- c) `<h:table>`
+- d) `<h:grid>`
 
 ---
 
@@ -994,10 +994,10 @@ What component is used to display tabular data in JSF?
 
 Which phase of the JSF lifecycle updates the model with user input values?
 
-- a) Apply Request Values
-- b) Process Validations
+- a) Process Validations
+- b) Invoke Application
 - c) Update Model Values
-- d) Invoke Application
+- d) Apply Request Values
 
 ---
 
@@ -1016,9 +1016,9 @@ public void validateAge(FacesContext context, UIComponent component,
 
 What type of validation is this?
 
-- a) Bean Validation
+- a) Built-in validation
 - b) Custom validator method
-- c) Built-in validation
+- c) Bean Validation
 - d) Client-side validation
 
 ---
@@ -1027,8 +1027,8 @@ What type of validation is this?
 
 What is the purpose of `<ui:composition>` in Facelets?
 
-- a) To compose music
-- b) To define a template composition
+- a) To define a template composition
+- b) To compose music
 - c) To create custom components
 - d) To group components
 
@@ -1047,10 +1047,10 @@ What is the purpose of `<ui:composition>` in Facelets?
 
 What does `execute="@form"` mean?
 
-- a) Execute the entire form
+- a) Validate the form
 - b) Execute JavaScript
 - c) Submit form data for the entire form
-- d) Validate the form
+- d) Execute the entire form
 
 ---
 
@@ -1075,10 +1075,10 @@ public class ProductResource {
 
 What Java EE component integration is shown here?
 
-- a) JAX-RS with EJB
-- b) JAX-WS with JPA
-- c) Servlet with CDI
-- d) JSF with EJB
+- a) JSF with EJB
+- b) JAX-RS with EJB
+- c) JAX-WS with JPA
+- d) Servlet with CDI
 
 ---
 
@@ -1086,10 +1086,10 @@ What Java EE component integration is shown here?
 
 Which annotation enables CORS (Cross-Origin Resource Sharing) in JAX-RS?
 
-- a) `@CORS`
-- b) `@CrossOrigin`
+- a) `@AllowOrigin`
+- b) `@CORS`
 - c) Custom filter with `@Provider`
-- d) `@AllowOrigin`
+- d) `@CrossOrigin`
 
 ---
 
@@ -1118,9 +1118,9 @@ public class ManualTransactionBean {
 
 What type of transaction management is this?
 
-- a) Container-Managed Transaction (CMT)
+- a) Automatic transaction management
 - b) Bean-Managed Transaction (BMT)
-- c) Automatic transaction management
+- c) Container-Managed Transaction (CMT)
 - d) Distributed transaction management
 
 ---
@@ -1129,8 +1129,8 @@ What type of transaction management is this?
 
 Which deployment descriptor is used to configure servlet mappings?
 
-- a) `application.xml`
-- b) `web.xml`
+- a) `web.xml`
+- b) `application.xml`
 - c) `ejb-jar.xml`
 - d) `persistence.xml`
 
@@ -1152,10 +1152,10 @@ public class ChatClient {
 
 What is this class?
 
-- a) A WebSocket server endpoint
+- a) A JMS consumer
 - b) A WebSocket client endpoint
 - c) A REST client
-- d) A JMS consumer
+- d) A WebSocket server endpoint
 
 ---
 
@@ -1163,8 +1163,8 @@ What is this class?
 
 What is the purpose of the `META-INF/beans.xml` file?
 
-- a) To define EJBs
-- b) To enable CDI in the module
+- a) To enable CDI in the module
+- b) To define EJBs
 - c) To configure database connections
 - d) To map REST endpoints
 
@@ -1188,10 +1188,10 @@ public class FileResource {
 
 What is `StreamingOutput` used for?
 
-- a) To stream data to the client efficiently
-- b) To log output
-- c) To compress data
-- d) To cache responses
+- a) To compress data
+- b) To cache responses
+- c) To stream data to the client efficiently
+- d) To log output
 
 ---
 
@@ -1199,10 +1199,10 @@ What is `StreamingOutput` used for?
 
 Which archive type contains both web and EJB modules?
 
-- a) WAR
-- b) JAR
-- c) EAR
-- d) RAR
+- a) RAR
+- b) EAR
+- c) WAR
+- d) JAR
 
 ---
 
@@ -1217,10 +1217,10 @@ public void runEvery15Minutes() {
 
 How often does this timer execute?
 
-- a) Every 15 hours
+- a) Once every 15 days
 - b) Every 15 minutes
 - c) 15 times per hour
-- d) Once every 15 days
+- d) Every 15 hours
 
 ---
 
@@ -1228,10 +1228,10 @@ How often does this timer execute?
 
 What is the standard port for HTTP connections in Java EE application servers?
 
-- a) 8080
-- b) 80
-- c) 8443
-- d) It varies by server implementation
+- a) It varies by server implementation
+- b) 8080
+- c) 80
+- d) 8443
 
 ---
 
@@ -1239,100 +1239,100 @@ What is the standard port for HTTP connections in Java EE application servers?
 
 ### CDI (1-10)
 
-1. c) Request scope
-2. b) `@Inject`
-3. b) CreditCardProcessor
-4. a) To produce factory methods for bean creation
-5. b) `${appVersion}`
-6. c) `@ConversationScoped`
-7. b) Add it to beans.xml
-8. b) To disambiguate between multiple implementations of the same type
-9. b) After dependency injection is complete
+1. a) Request scope
+2. d) `@Inject`
+3. d) CreditCardProcessor
+4. c) To produce factory methods for bean creation
+5. c) `${appVersion}`
+6. b) `@ConversationScoped`
+7. d) Add it to beans.xml
+8. a) To disambiguate between multiple implementations of the same type
+9. d) After dependency injection is complete
 10. c) `@Observes` (for observer) and `Event<T>` (for firing)
 
 ### SOAP (11-20)
 
-11. b) Only add
-12. b) XML over various protocols (HTTP, SMTP, JMS, etc.)
+11. a) Only add
+12. d) XML over various protocols (HTTP, SMTP, JMS, etc.)
 13. b) `wsimport`
-14. a) Web Service Description Language
+14. c) Web Service Description Language
 15. b) Automatic transaction management and pooling
 16. d) All of the above
-17. b) Message Transmission Optimization Mechanism for efficient binary data transfer
+17. c) Message Transmission Optimization Mechanism for efficient binary data transfer
 18. b) Injects a web service client proxy
-19. c) Document/literal wrapped
-20. b) To intercept and modify SOAP messages
+19. d) Document/literal wrapped
+20. a) To intercept and modify SOAP messages
 
 ### Bean Validation (21-25)
 
-21. a) `@Email`
+21. c) `@Email`
 22. b) Using `ValidatorFactory` to get a `Validator` and call `validate()`
-23. b) Cascades validation to the Customer object's fields
-24. c) `@Min` and `@Max`
-25. b) A `ConstraintViolationException` is thrown
+23. a) Cascades validation to the Customer object's fields
+24. b) `@Min` and `@Max`
+25. a) A 400 Bad Request is returned automatically
 
 ### JSON-P (26-30)
 
-26. b) A JSON object
+26. c) A JSON object
 27. b) JSON-P (Java API for JSON Processing)
-28. b) Object Model API
-29. b) `Json.createArrayBuilder()`
+28. a) Object Model API
+29. a) `Json.createArrayBuilder()`
 30. b) Streaming API
 
 ### Advanced JPA (31-40)
 
-31. b) `em.createNamedQuery("Product.findByCategory")`
-32. b) To control which attributes are fetched in a query
+31. a) `em.createNamedQuery("Product.findByCategory")`
+32. c) To control which attributes are fetched in a query
 33. b) To convert between Java attribute types and database column types
-34. b) `LockModeType.PESSIMISTIC_WRITE`
+34. a) `LockModeType.PESSIMISTIC_WRITE`
 35. c) Criteria API
-36. b) It's no longer managed by the EntityManager
-37. b) Deletes OrderItem entities when removed from the collection
-38. b) `PersistenceContextType.TRANSACTION`
-39. b) A database index on category and name columns
-40. b) `persist()` is for new entities, `merge()` is for detached entities
+36. a) It's no longer managed by the EntityManager
+37. c) Deletes OrderItem entities when removed from the collection
+38. c) `PersistenceContextType.TRANSACTION`
+39. a) A database index on category and name columns
+40. c) `persist()` is for new entities, `merge()` is for detached entities
 
 ### Advanced EJB (41-50)
 
-41. b) The bean manages concurrency using Java synchronization
+41. a) The bean manages concurrency using Java synchronization
 42. b) `Future<T>`
-43. b) Interval timer
-44. b) Prevent interceptors from being applied to this method
-45. b) To specify initialization order
+43. c) Interval timer
+44. c) Prevent interceptors from being applied to this method
+45. c) To specify initialization order
 46. b) Topic
 47. c) `NOT_SUPPORTED`
-48. a) The timer doesn't survive server restarts
+48. d) The timer doesn't survive server restarts
 49. c) One per application
-50. b) The bean exposes a no-interface view
+50. d) The bean exposes a no-interface view
 
 ### Advanced Servlets (51-55)
 
-51. b) Before and after the servlet
+51. d) Before and after the servlet
 52. b) `HttpSessionListener`
-53. b) 5MB
-54. b) `RequestDispatcher.include()`
-55. b) Don't create a new session if one doesn't exist
+53. d) 5MB
+54. a) `RequestDispatcher.include()`
+55. c) Don't create a new session if one doesn't exist
 
 ### Advanced JSF (56-60)
 
 56. b) `<h:dataTable>`
 57. c) Update Model Values
 58. b) Custom validator method
-59. b) To define a template composition
+59. a) To define a template composition
 60. c) Submit form data for the entire form
 
 ### Integration & Advanced Topics (61-70)
 
-61. a) JAX-RS with EJB
+61. b) JAX-RS with EJB
 62. c) Custom filter with `@Provider`
 63. b) Bean-Managed Transaction (BMT)
-64. b) `web.xml`
+64. a) `web.xml`
 65. b) A WebSocket client endpoint
-66. b) To enable CDI in the module
-67. a) To stream data to the client efficiently
-68. c) EAR
+66. a) To enable CDI in the module
+67. c) To stream data to the client efficiently
+68. b) EAR
 69. b) Every 15 minutes
-70. d) It varies by server implementation
+70. a) It varies by server implementation
 
 ---
 

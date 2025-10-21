@@ -131,7 +131,7 @@ What does the `@Context` annotation do?
 What is the correct way to define a bidirectional `@OneToMany` relationship?
 
 - a) Use `@OneToMany` on both sides
-- b) Use `@OneToMany` on one side and `@ManyToOne` with `mappedBy` on the other
+- b) Use `@OneToMany` on one side and `@ManyToOne` with `@JoinColumn` on the other
 - c) Use `@OneToMany` with `mappedBy` on the owning side
 - d) Bidirectional relationships are not supported
 
@@ -239,7 +239,7 @@ What does `@Startup` do?
 In JPA, which relationship owns the foreign key?
 
 - a) Always the `@OneToMany` side
-- b) The side without `mappedBy`
+- b) The side with `mappedBy`
 - c) Always the `@ManyToOne` side
 - d) The side with `@JoinColumn`
 
@@ -561,11 +561,11 @@ What is the purpose of `@NamedEntityGraph`?
 
 ### Question 31
 
-Which method in `EntityManager` refreshes an entity with data from the database?
+Which method in `EntityManager` merges a detached entity back into the persistence context?
 
-- a) `reload()`
+- a) `persist()`
 - b) `refresh()`
-- c) `update()`
+- c) `merge()`
 - d) `synchronize()`
 
 ---
@@ -633,12 +633,12 @@ What does `autoApply = true` do?
 
 ### Question 35
 
-Which WebSocket annotation handles connection errors?
+Which WebSocket annotation handles the opening of a new connection?
 
-- a) `@OnException`
+- a) `@OnConnect`
 - b) `@OnError`
-- c) `@ErrorHandler`
-- d) `@OnFailure`
+- c) `@OnOpen`
+- d) `@OnStart`
 
 ---
 
@@ -728,12 +728,12 @@ public class SecureResource {
 }
 ```
 
-What does `SecurityContext` provide in JAX-RS?
+What method checks if the current user has a specific role?
 
-- a) Database security
-- b) Access to security information about the current request
-- c) Encryption capabilities
-- d) Token generation
+- a) `hasRole()`
+- b) `checkRole()`
+- c) `isUserInRole()`
+- d) `validateRole()`
 
 ---
 
@@ -773,7 +773,7 @@ What does this configuration enforce?
 
 ### Question 43
 
-Which HTTP method should be used for partial updates?
+Which HTTP method completely replaces a resource?
 
 - a) PUT
 - b) PATCH
@@ -868,12 +868,12 @@ public class UserOrderResource {
 }
 ```
 
-What REST principle is demonstrated here?
+Which annotation extracts path parameters from the URI?
 
-- a) Stateless communication
-- b) Resource hierarchy and URI design
-- c) Caching
-- d) Uniform interface
+- a) `@UriParam`
+- b) `@PathVariable`
+- c) `@PathParam`
+- d) `@RequestParam`
 
 ---
 
@@ -914,7 +914,7 @@ What is the default lock type for methods without `@Lock` annotation?
 
 ### Question 51
 
-Which JSP standard action includes content at request time?
+Which JSP directive includes content at translation time?
 
 - a) `<%@ include %>`
 - b) `<jsp:include>`
@@ -983,7 +983,7 @@ What does `@Lob` indicate?
 
 ### Question 55
 
-Which batch API interface processes individual items?
+Which batch API interface writes processed items?
 
 - a) `ItemReader`
 - b) `ItemProcessor`
@@ -1026,7 +1026,7 @@ What is a CDI Conversation?
 
 ### Question 57
 
-Which JMS destination type supports multiple consumers receiving the same message?
+Which JMS destination type ensures only one consumer receives each message?
 
 - a) Queue
 - b) Topic
@@ -1105,7 +1105,7 @@ What type of transaction management is this?
 
 ### Question 61
 
-Which annotation enables AJAX for a JSF component?
+Which JSF tag enables AJAX for a component?
 
 - a) `<f:ajax>`
 - b) `<h:ajax>`
@@ -1173,7 +1173,7 @@ What is an entity listener?
 
 ### Question 65
 
-Which HTTP status code indicates unauthorized access?
+Which HTTP status code indicates forbidden access (authenticated but not authorized)?
 
 - a) 400
 - b) 401
@@ -1243,10 +1243,10 @@ What happens when you call `removeOrder()` with `orphanRemoval = true`?
 
 ### Question 69
 
-Which JSF tag displays validation/error messages?
+Which JSF tag displays all messages for all components?
 
 - a) `<h:errors>`
-- b) `<h:messages>` or `<h:message>`
+- b) `<h:messages>`
 - c) `<f:messages>`
 - d) `<jsf:errors>`
 
@@ -1278,13 +1278,13 @@ When does this timer execute?
 4. b) To ensure the alert is saved even if the parent transaction rolls back
 5. b) `@PrePersist`
 6. b) Injects JAX-RS context information
-7. b) Use `@OneToMany` on one side and `@ManyToOne` with `mappedBy` on the other
+7. c) Use `@OneToMany` with `mappedBy` on the owning side
 8. b) To convert between Java objects and WebSocket messages
 9. b) `@ApplicationScoped`
 10. b) Each class has its own table joined by foreign keys
 11. c) `@PUT`
 12. b) Initializes the bean eagerly at application startup
-13. b) The side without `mappedBy`
+13. d) The side with `@JoinColumn`
 14. b) MVC pattern
 15. b) `MANDATORY`
 16. b) Asynchronous
@@ -1302,33 +1302,33 @@ When does this timer execute?
 28. b) Repository pattern
 29. a) `@Inject` with `JMSContext`
 30. b) To control fetch strategies and avoid N+1 queries
-31. b) `refresh()`
+31. c) `merge()`
 32. b) /api
 33. b) `@PrePassivate`
 34. a) Applies the converter to all Boolean attributes automatically
-35. b) `@OnError`
+35. c) `@OnOpen`
 36. b) EJB runtime context and caller information
 37. b) `@Produces`
 38. b) Enables detailed error messages and debugging features
 39. b) `@IdClass` or `@EmbeddedId`
-40. b) Access to security information about the current request
+40. c) `isUserInRole()`
 41. d) Both a and b
 42. a) The code must be unique in the database
-43. b) PATCH
+43. a) PUT
 44. b) Event-driven communication between beans
 45. b) `ORDER BY`
 46. c) No interceptors
 47. b) To create a class that can be embedded in entities
-48. b) Resource hierarchy and URI design
+48. c) `@PathParam`
 49. d) Both b and c
 50. a) READ
-51. b) `<jsp:include>`
+51. a) `<%@ include %>`
 52. b) The execution order of filters
 53. b) `@Provider`
 54. a) Large Object - suitable for BLOBs and CLOBs
-55. b) `ItemProcessor`
+55. c) `ItemWriter`
 56. b) A long-running interaction spanning multiple requests
-57. b) Topic
+57. a) Queue
 58. b) Sets HTTP cache control headers
 59. c) `getJobOperator().start()`
 60. b) Bean-Managed Transaction (BMT)
@@ -1336,11 +1336,11 @@ When does this timer execute?
 62. d) All of the above
 63. a) `session.getBasicRemote().sendText()`
 64. a) A class that listens for entity lifecycle events
-65. b) 401
+65. c) 403
 66. b) `@Named` with CDI
 67. b) `ManagedScheduledExecutorService`
 68. b) The order is deleted from the database
-69. b) `<h:messages>` or `<h:message>`
+69. b) `<h:messages>`
 70. b) Monday through Friday at 9:00 AM
 
 ---
