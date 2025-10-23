@@ -7,7 +7,7 @@
 - This quiz contains 70 multiple-choice questions covering all Java EE 7 topics
 - Each question has 4 options (a, b, c, d)
 - Some questions may have multiple correct answers
-- Time limit: 150 minutes (simulating real exam conditions)
+- Time limit: 120 minutes (simulating real exam conditions)
 - Passing score: 66% (46 correct answers out of 70)
 
 ---
